@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Innovation IP Checker | IP-SAKTI Sahayak
+  </title>
+  <meta content="IP-SAKTI Sahayak — source-grounded AI guidance for Ayurveda IP and regulatory pathways." name="description"/>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="navbar">
+   <div class="container nav-inner">
+    <a class="brand" href="index.html">
+     <span class="brand-mark">
+      S
+     </span>
+     <span>
+      IP-SAKTI Sahayak
+     </span>
+    </a>
+    <button class="mobile-toggle">
+     ☰
+    </button>
+    <nav class="nav-links">
+     <a class="" href="index.html">
+      Home
+     </a>
+     <a class="" href="ask-sahayak.html">
+      Ask Sahayak
+     </a>
+     <a class="active" href="ip-checker.html">
+      IP Checker
+     </a>
+     <a class="" href="formulation.html">
+      Formulation
+     </a>
+     <a class="" href="patent-explorer.html">
+      Patent Explorer
+     </a>
+     <a class="" href="regulatory-navigator.html">
+      Regulatory
+     </a>
+     <a class="" href="regulatory-journey.html">
+      Journey
+     </a>
+     <a class="" href="comparison.html">
+      Compare
+     </a>
+     <a class="" href="knowledge-explorer.html">
+      Knowledge
+     </a>
+     <a class="" href="evidence.html">
+      Evidence
+     </a>
+    </nav>
+    <select aria-label="Language" class="lang-select" id="language">
+     <option>
+      English
+     </option>
+     <option>
+      हिन्दी
+     </option>
+    </select>
+   </div>
+  </header>
+  <main class="section">
+   <div class="container">
+    <div class="section-head">
+     <div>
+      <div class="kicker">
+       Innovation analysis
+      </div>
+      <h1 style="font-size:44px">
+       Innovation IP Checker
+      </h1>
+      <p>
+       Get preliminary indicators for possible IP protection and prior-art review.
+      </p>
+     </div>
+    </div>
+    <div class="card form-card">
+     <div class="form-grid">
+      <div class="field">
+       <label>
+        Innovation name
+       </label>
+       <input id="ipName" placeholder="e.g. Herbal wound-care formulation"/>
+      </div>
+      <div class="field">
+       <label>
+        Jurisdiction
+       </label>
+       <select id="ipJurisdiction">
+        <option>
+         India
+        </option>
+        <option>
+         International
+        </option>
+       </select>
+      </div>
+      <div class="field full">
+       <label>
+        Innovation description
+       </label>
+       <textarea id="ipDesc" placeholder="Describe what you developed and what problem it solves."></textarea>
+      </div>
+      <div class="field full">
+       <label>
+        What is novel?
+       </label>
+       <textarea id="ipNovel" placeholder="Explain the new ingredient combination, process, dosage form, device, method, etc."></textarea>
+      </div>
+      <div class="field">
+       <label>
+        Traditional knowledge involved?
+       </label>
+       <select id="ipTK">
+        <option>
+         No / Unknown
+        </option>
+        <option>
+         Yes
+        </option>
+       </select>
+      </div>
+      <div class="field">
+       <label>
+        Existing similar product known?
+       </label>
+       <select id="ipExisting">
+        <option>
+         Unknown
+        </option>
+        <option>
+         Yes
+        </option>
+        <option>
+         No
+        </option>
+       </select>
+      </div>
+     </div>
+     <button class="btn" id="ipBtn">
+      Check Innovation →
+     </button>
+     <div class="result card" id="ipResult">
+     </div>
+    </div>
+   </div>
+  </main>
+  <script>
+   document.addEventListener("DOMContentLoaded",()=>{
+ const btn=document.getElementById("ipBtn"), result=document.getElementById("ipResult");
+ btn.onclick=async()=>{
+  result.classList.add("show"); result.innerHTML='<div class="loading"><span class="dot"></span> Analysing…</div>';
+  try{
+   const d=await apiPost("/ip-check",{name:ipName.value,description:ipDesc.value,novelty:ipNovel.value,traditional_knowledge:ipTK.value,similar_product:ipExisting.value,jurisdiction:ipJurisdiction.value});
+   result.innerHTML=`<div class="result-header"><h2>Preliminary assessment</h2><span class="pill ${d.risk==="High"?"danger":d.risk==="Medium"?"warn":""}">${escapeHtml(d.risk)} attention</span></div>
+   <p>${escapeHtml(d.summary)}</p><h3>Potential IP routes</h3><div class="grid grid-3">${d.routes.map(r=>`<div class="card"><h3>${escapeHtml(r.name)}</h3><p class="muted">${escapeHtml(r.reason)}</p><span class="pill">${escapeHtml(r.status)}</span></div>`).join("")}</div>
+   <div style="margin-top:20px"><h3>Recommended checks</h3><ul>${d.checks.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></div>${sourcesHtml(d.sources)}
+   <div class="notice" style="margin-top:20px"><b>Important:</b> This is not a final patentability determination.</div>`;
+  }catch(e){result.innerHTML='<div class="notice">'+escapeHtml(e.message)+'</div>';}
+ };
+});
+  </script>
+  <footer>
+   <div class="container footer-grid">
+    <div>
+     <h3>
+      IP-SAKTI Sahayak
+     </h3>
+     <p>
+      AI-powered, source-grounded preliminary guidance for Ayurveda intellectual property and regulatory pathways.
+     </p>
+    </div>
+    <div>
+     <h3>
+      Explore
+     </h3>
+     <a href="ask-sahayak.html">
+      Ask Sahayak
+     </a>
+     <a href="formulation.html">
+      Formulation Explorer
+     </a>
+     <a href="knowledge-explorer.html">
+      Knowledge Explorer
+     </a>
+    </div>
+    <div>
+     <h3>
+      Important
+     </h3>
+     <a href="evidence.html">
+      Evidence &amp; Sources
+     </a>
+     <a href="comparison.html">
+      National / International
+     </a>
+     <p class="muted">
+      Informational guidance only — not legal advice.
+     </p>
+    </div>
+   </div>
+   <div class="container" style="margin-top:25px;border-top:1px solid #31564a;padding-top:15px;font-size:13px">
+    ©
+    <span id="year">
+    </span>
+    IP-SAKTI Sahayak
+   </div>
+  </footer>
+  <script src="js/main.js">
+  </script>
+ </body>
+</html>
+

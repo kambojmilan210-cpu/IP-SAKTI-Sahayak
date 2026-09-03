@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Indian patent framework — The Patents Act, 1970",
+    "authority": "Office of the Controller General of Patents, Designs & Trade Marks (IP India)",
+    "version": "Official current Act page; verify latest amendments before filing",
+    "effective_date": "Statute-specific",
+    "jurisdiction": "India",
+    "description": "Official Indian patent law source covering patentability, applications, examination and related procedures.",
+    "url": "https://ipindia.gov.in/acts/patent-act-1970",
+    "source_type": "Official Government Source"
+  },
+  {
+    "title": "Traditional Knowledge Digital Library (TKDL)",
+    "authority": "CSIR and Ministry of AYUSH, Government of India",
+    "version": "Official TKDL portal; access conditions apply",
+    "effective_date": "Continuously maintained resource",
+    "jurisdiction": "India",
+    "description": "Official Government of India traditional-knowledge resource and prior-art reference for Indian systems of medicine.",
+    "url": "https://www.tkdl.res.in/tkdl/Home.asp",
+    "source_type": "Official Government Source"
+  },
+  {
+    "title": "Biological Diversity Act, 2002",
+    "authority": "India Code / Government of India",
+    "version": "Verify current amended text before action",
+    "effective_date": "Act-specific",
+    "jurisdiction": "India",
+    "description": "Official statutory source for conservation, sustainable use and fair and equitable benefit sharing relating to biological resources and knowledge.",
+    "url": "https://www.indiacode.nic.in/indiacode/handle/123456789/2046?view_type=browse",
+    "source_type": "Official Government Source"
+  },
+  {
+    "title": "Nagoya Protocol on Access and Benefit-sharing",
+    "authority": "Convention on Biological Diversity (CBD)",
+    "version": "Official CBD resource",
+    "effective_date": "Protocol entered into force 12 October 2014",
+    "jurisdiction": "International",
+    "description": "Official international framework on access to genetic resources and fair and equitable sharing of benefits arising from their utilization.",
+    "url": "https://www.cbd.int/abs",
+    "source_type": "Official International Source"
+  },
+  {
+    "title": "TRIPS Agreement",
+    "authority": "World Trade Organization (WTO)",
+    "version": "Official WTO legal text and interpretive resources",
+    "effective_date": "Agreement-specific",
+    "jurisdiction": "International",
+    "description": "Official multilateral framework for minimum standards of intellectual-property protection and enforcement.",
+    "url": "https://www.wto.org/english/tratop_e/trips_e/legal_and_interpretive_texts_e.htm",
+    "source_type": "Official International Source"
+  },
+  {
+    "title": "WIPO PCT System",
+    "authority": "World Intellectual Property Organization (WIPO)",
+    "version": "Official WIPO system page",
+    "effective_date": "System-specific",
+    "jurisdiction": "International",
+    "description": "Official WIPO resource for the Patent Cooperation Treaty international patent filing system.",
+    "url": "https://www.wipo.int/en/web/pct-system",
+    "source_type": "Official International Source"
+  },
+  {
+    "title": "WIPO Madrid System",
+    "authority": "World Intellectual Property Organization (WIPO)",
+    "version": "Official WIPO system page",
+    "effective_date": "System-specific",
+    "jurisdiction": "International",
+    "description": "Official WIPO resource for international trademark registration and management.",
+    "url": "https://www.wipo.int/en/web/madrid-system",
+    "source_type": "Official International Source"
+  },
+  {
+    "title": "WIPO Hague System",
+    "authority": "World Intellectual Property Organization (WIPO)",
+    "version": "Official WIPO system page",
+    "effective_date": "System-specific",
+    "jurisdiction": "International",
+    "description": "Official WIPO resource for international registration of industrial designs.",
+    "url": "https://www.wipo.int/en/web/hague-system",
+    "source_type": "Official International Source"
+  },
+  {
+    "title": "WIPO Budapest Treaty",
+    "authority": "World Intellectual Property Organization (WIPO)",
+    "version": "Official treaty page",
+    "effective_date": "Treaty-specific",
+    "jurisdiction": "International",
+    "description": "Official treaty resource concerning recognition of microorganism deposits for patent procedure purposes.",
+    "url": "https://www.wipo.int/en/web/treaties/registration/budapest/index",
+    "source_type": "Official International Source"
+  },
+  {
+    "title": "Drugs and Cosmetics Rules, 1945 — AYUSH",
+    "authority": "Ministry of AYUSH, Government of India",
+    "version": "Official Ministry-hosted rules document; verify latest amendments",
+    "effective_date": "Rules and amendment-specific",
+    "jurisdiction": "India",
+    "description": "Official regulatory reference relevant to Ayurveda, Siddha and Unani drug requirements, including labeling and related provisions.",
+    "url": "https://ayush.gov.in/resources/pdf/quality_standards/Drugs-and-Cosmetics-Act-Rules.pdf",
+    "source_type": "Official Government Source"
+  },
+  {
+    "title": "CDSCO New Drugs and Phytopharmaceutical Resources",
+    "authority": "Central Drugs Standard Control Organization (CDSCO), Government of India",
+    "version": "Official CDSCO current portal",
+    "effective_date": "Current portal resources",
+    "jurisdiction": "India",
+    "description": "Official regulatory portal for new drugs, clinical-trial and phytopharmaceutical-related guidance and resources.",
+    "url": "https://cdsco.gov.in/opencms/opencms/en/Drugs/New-Drugs/",
+    "source_type": "Official Government Source"
+  }
+]

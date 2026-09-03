@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Patentability — novelty",
+    "category": "Patent",
+    "summary": "Novelty asks whether the relevant invention is new relative to prior art. A structured prior-art search is important.",
+    "source": "Indian Patents Act / applicable patent framework",
+    "authority": "Government / statutory framework",
+    "version": "Prototype reference",
+    "jurisdiction": "India",
+    "url": "https://ipindia.gov.in/acts/patent-act-1970"
+  },
+  {
+    "title": "Inventive step",
+    "category": "Patent",
+    "summary": "Inventive-step analysis considers whether the claimed invention involves a technical advance or economic significance and is not obvious to a skilled person, as applicable.",
+    "source": "Indian patent framework",
+    "authority": "Government / statutory framework",
+    "version": "Prototype reference",
+    "jurisdiction": "India",
+    "url": "https://ipindia.gov.in/acts/patent-act-1970"
+  },
+  {
+    "title": "Traditional Knowledge Digital Library (TKDL) pointer",
+    "category": "Traditional Knowledge",
+    "summary": "TKDL is relevant to traditional medicinal knowledge and prior-art context. Production systems should use authoritative access and current metadata.",
+    "source": "TKDL / CSIR and Government of India resources",
+    "authority": "Government / public authority",
+    "version": "Prototype reference",
+    "jurisdiction": "India",
+    "url": "https://www.tkdl.res.in/tkdl/Home.asp"
+  },
+  {
+    "title": "Access and Benefit Sharing (ABS)",
+    "category": "ABS",
+    "summary": "Biological-resource and associated traditional-knowledge use can trigger access-and-benefit-sharing considerations depending on the applicable framework and circumstances.",
+    "source": "Biological Diversity framework / CBD",
+    "authority": "Government / international framework",
+    "version": "Prototype reference",
+    "jurisdiction": "India / International",
+    "url": "https://www.indiacode.nic.in/indiacode/handle/123456789/2046?view_type=browse"
+  },
+  {
+    "title": "Nagoya Protocol",
+    "category": "ABS",
+    "summary": "The Nagoya Protocol is an international framework concerning access to genetic resources and fair and equitable sharing of benefits arising from their utilization.",
+    "source": "Convention on Biological Diversity — Nagoya Protocol",
+    "authority": "CBD / international framework",
+    "version": "Protocol reference",
+    "jurisdiction": "International",
+    "url": "https://www.cbd.int/abs"
+  },
+  {
+    "title": "TRIPS",
+    "category": "International IP",
+    "summary": "TRIPS sets multilateral minimum standards for several categories of intellectual property protection.",
+    "source": "WTO — TRIPS Agreement",
+    "authority": "WTO",
+    "version": "Agreement reference",
+    "jurisdiction": "International",
+    "url": "https://www.wto.org/english/tratop_e/trips_e/legal_and_interpretive_texts_e.htm"
+  },
+  {
+    "title": "PCT",
+    "category": "International IP",
+    "summary": "The Patent Cooperation Treaty provides an international application route that can simplify filing strategy across multiple jurisdictions; it does not itself grant a worldwide patent.",
+    "source": "WIPO — PCT",
+    "authority": "WIPO",
+    "version": "Treaty reference",
+    "jurisdiction": "International",
+    "url": "https://www.wipo.int/en/web/pct-system"
+  },
+  {
+    "title": "Madrid System",
+    "category": "Trademark",
+    "summary": "The Madrid System provides a centralized mechanism for seeking trademark protection in multiple participating jurisdictions.",
+    "source": "WIPO — Madrid System",
+    "authority": "WIPO",
+    "version": "System reference",
+    "jurisdiction": "International",
+    "url": "https://www.wipo.int/en/web/madrid-system"
+  },
+  {
+    "title": "Hague System",
+    "category": "Design",
+    "summary": "The Hague System supports international registration of industrial designs in participating jurisdictions.",
+    "source": "WIPO — Hague System",
+    "authority": "WIPO",
+    "version": "System reference",
+    "jurisdiction": "International",
+    "url": "https://www.wipo.int/en/web/hague-system"
+  },
+  {
+    "title": "Budapest Treaty",
+    "category": "Patent / Microorganisms",
+    "summary": "The Budapest Treaty concerns recognition of the deposit of microorganisms for patent procedure purposes by contracting states.",
+    "source": "WIPO — Budapest Treaty",
+    "authority": "WIPO",
+    "version": "Treaty reference",
+    "jurisdiction": "International",
+    "url": "https://www.wipo.int/en/web/treaties/registration/budapest/index"
+  }
+]

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Regulatory Navigator | IP-SAKTI Sahayak
+  </title>
+  <meta content="IP-SAKTI Sahayak — source-grounded AI guidance for Ayurveda IP and regulatory pathways." name="description"/>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="navbar">
+   <div class="container nav-inner">
+    <a class="brand" href="index.html">
+     <span class="brand-mark">
+      S
+     </span>
+     <span>
+      IP-SAKTI Sahayak
+     </span>
+    </a>
+    <button class="mobile-toggle">
+     ☰
+    </button>
+    <nav class="nav-links">
+     <a class="" href="index.html">
+      Home
+     </a>
+     <a class="" href="ask-sahayak.html">
+      Ask Sahayak
+     </a>
+     <a class="" href="ip-checker.html">
+      IP Checker
+     </a>
+     <a class="" href="formulation.html">
+      Formulation
+     </a>
+     <a class="" href="patent-explorer.html">
+      Patent Explorer
+     </a>
+     <a class="active" href="regulatory-navigator.html">
+      Regulatory
+     </a>
+     <a class="" href="regulatory-journey.html">
+      Journey
+     </a>
+     <a class="" href="comparison.html">
+      Compare
+     </a>
+     <a class="" href="knowledge-explorer.html">
+      Knowledge
+     </a>
+     <a class="" href="evidence.html">
+      Evidence
+     </a>
+    </nav>
+    <select aria-label="Language" class="lang-select" id="language">
+     <option>
+      English
+     </option>
+     <option>
+      हिन्दी
+     </option>
+    </select>
+   </div>
+  </header>
+  <main class="section">
+   <div class="container">
+    <div class="section-head">
+     <div>
+      <div class="kicker">
+       Compliance pathway
+      </div>
+      <h1 style="font-size:44px">
+       Regulatory Navigator
+      </h1>
+      <p>
+       Start with the product category and receive a preliminary pathway.
+      </p>
+     </div>
+    </div>
+    <div class="card form-card">
+     <div class="form-grid">
+      <div class="field">
+       <label>
+        Product category
+       </label>
+       <select id="rCategory">
+        <option>
+         Classical / generic medicine
+        </option>
+        <option>
+         Proprietary medicine
+        </option>
+        <option>
+         New / non-classical drug
+        </option>
+        <option>
+         Phytopharmaceutical
+        </option>
+        <option>
+         Ayurveda-Aahar / nutraceutical
+        </option>
+        <option>
+         Cosmetic
+        </option>
+       </select>
+      </div>
+      <div class="field">
+       <label>
+        Jurisdiction
+       </label>
+       <select id="rJurisdiction">
+        <option>
+         India
+        </option>
+        <option>
+         International
+        </option>
+       </select>
+      </div>
+      <div class="field full">
+       <label>
+        Product description
+       </label>
+       <textarea id="rDesc" placeholder="Briefly describe the formulation and intended use."></textarea>
+      </div>
+     </div>
+     <button class="btn" id="rBtn">
+      Find Regulatory Path →
+     </button>
+     <div class="result card" id="rResult">
+     </div>
+    </div>
+   </div>
+  </main>
+  <script>
+   document.addEventListener("DOMContentLoaded",()=>{
+ rBtn.onclick=async()=>{
+  rResult.classList.add("show");rResult.innerHTML='<div class="loading"><span class="dot"></span> Building pathway…</div>';
+  try{
+   const d=await apiPost("/regulatory",{category:rCategory.value,jurisdiction:rJurisdiction.value,description:rDesc.value});
+   rResult.innerHTML=`<div class="result-header"><h2>${escapeHtml(d.title)}</h2><span class="pill">${escapeHtml(d.jurisdiction)}</span></div>
+   <p>${escapeHtml(d.summary)}</p><div class="timeline">${d.steps.map((s,i)=>`<div class="step ${i===0?"active":""}"><div class="step-no">${i+1}</div><div><h3>${escapeHtml(s.title)}</h3><p class="muted">${escapeHtml(s.detail)}</p></div></div>`).join("")}</div>
+   ${sourcesHtml(d.sources)}<div class="notice" style="margin-top:20px">${escapeHtml(d.disclaimer)}</div>`;
+  }catch(e){rResult.innerHTML='<div class="notice">'+escapeHtml(e.message)+'</div>';}
+ };
+});
+  </script>
+  <footer>
+   <div class="container footer-grid">
+    <div>
+     <h3>
+      IP-SAKTI Sahayak
+     </h3>
+     <p>
+      AI-powered, source-grounded preliminary guidance for Ayurveda intellectual property and regulatory pathways.
+     </p>
+    </div>
+    <div>
+     <h3>
+      Explore
+     </h3>
+     <a href="ask-sahayak.html">
+      Ask Sahayak
+     </a>
+     <a href="formulation.html">
+      Formulation Explorer
+     </a>
+     <a href="knowledge-explorer.html">
+      Knowledge Explorer
+     </a>
+    </div>
+    <div>
+     <h3>
+      Important
+     </h3>
+     <a href="evidence.html">
+      Evidence &amp; Sources
+     </a>
+     <a href="comparison.html">
+      National / International
+     </a>
+     <p class="muted">
+      Informational guidance only — not legal advice.
+     </p>
+    </div>
+   </div>
+   <div class="container" style="margin-top:25px;border-top:1px solid #31564a;padding-top:15px;font-size:13px">
+    ©
+    <span id="year">
+    </span>
+    IP-SAKTI Sahayak
+   </div>
+  </footer>
+  <script src="js/main.js">
+  </script>
+ </body>
+</html>
+

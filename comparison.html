@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   National / International Compare | IP-SAKTI Sahayak
+  </title>
+  <meta content="IP-SAKTI Sahayak — source-grounded AI guidance for Ayurveda IP and regulatory pathways." name="description"/>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="navbar">
+   <div class="container nav-inner">
+    <a class="brand" href="index.html">
+     <span class="brand-mark">
+      S
+     </span>
+     <span>
+      IP-SAKTI Sahayak
+     </span>
+    </a>
+    <button class="mobile-toggle">
+     ☰
+    </button>
+    <nav class="nav-links">
+     <a class="" href="index.html">
+      Home
+     </a>
+     <a class="" href="ask-sahayak.html">
+      Ask Sahayak
+     </a>
+     <a class="" href="ip-checker.html">
+      IP Checker
+     </a>
+     <a class="" href="formulation.html">
+      Formulation
+     </a>
+     <a class="" href="patent-explorer.html">
+      Patent Explorer
+     </a>
+     <a class="" href="regulatory-navigator.html">
+      Regulatory
+     </a>
+     <a class="" href="regulatory-journey.html">
+      Journey
+     </a>
+     <a class="active" href="comparison.html">
+      Compare
+     </a>
+     <a class="" href="knowledge-explorer.html">
+      Knowledge
+     </a>
+     <a class="" href="evidence.html">
+      Evidence
+     </a>
+    </nav>
+    <select aria-label="Language" class="lang-select" id="language">
+     <option>
+      English
+     </option>
+     <option>
+      हिन्दी
+     </option>
+    </select>
+   </div>
+  </header>
+  <main class="section">
+   <div class="container">
+    <div class="section-head">
+     <div>
+      <div class="kicker">
+       Jurisdiction switch
+      </div>
+      <h1 style="font-size:44px">
+       National / International Compare
+      </h1>
+      <p>
+       Keep jurisdiction-specific answer sets separate instead of mixing legal frameworks.
+      </p>
+     </div>
+    </div>
+    <div class="card form-card">
+     <div class="field" style="max-width:360px">
+      <label>
+       Select jurisdiction
+      </label>
+      <select id="cJurisdiction">
+       <option value="India">
+        🇮🇳 India
+       </option>
+       <option value="International">
+        🌎 International / WIPO
+       </option>
+      </select>
+     </div>
+     <div class="compare" style="margin-top:22px">
+      <table>
+       <thead>
+        <tr>
+         <th>
+          Area
+         </th>
+         <th id="cHead">
+          India
+         </th>
+         <th>
+          Practical focus
+         </th>
+        </tr>
+       </thead>
+       <tbody id="cBody">
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+  </main>
+  <script>
+   const comparisonData={
+ India:[
+  ["Patent","Indian patent framework, filing and examination requirements","Novelty, inventive step, exclusions and prior art"],
+  ["Traditional Knowledge","TK protection and prior-art considerations including TKDL pointers","Avoid misappropriation; document provenance"],
+  ["ABS","Check applicability under India's biological-diversity framework","Source, access, benefit-sharing and compliance"],
+  ["Trademark","Brand/name protection subject to applicable trademark law","Search, distinctiveness and class selection"],
+  ["Regulatory","Classify product first, then identify applicable AYUSH/food/cosmetic pathway","Authority, documents and current rules"]
+ ],
+ International:[
+  ["Patent","Jurisdiction-specific patent laws; PCT can facilitate multi-country filing strategy","Choose target markets and manage priority/timing"],
+  ["Traditional Knowledge","International frameworks and national laws vary","Check WIPO/CBD-related developments and local rules"],
+  ["ABS","CBD/Nagoya-related obligations may apply depending on source and jurisdiction","Trace biological-resource origin and obligations"],
+  ["Trademark","National/regional systems; Madrid System may assist international filing","Select territories and goods/services"],
+  ["Regulatory","No single worldwide regulatory approval","Evaluate each target jurisdiction separately"]
+ ]
+};
+function renderCompare(){
+ const j=document.getElementById("cJurisdiction").value; document.getElementById("cHead").textContent=j;
+ document.getElementById("cBody").innerHTML=comparisonData[j].map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("");
+}
+document.addEventListener("DOMContentLoaded",()=>{renderCompare();cJurisdiction.onchange=renderCompare;});
+  </script>
+  <footer>
+   <div class="container footer-grid">
+    <div>
+     <h3>
+      IP-SAKTI Sahayak
+     </h3>
+     <p>
+      AI-powered, source-grounded preliminary guidance for Ayurveda intellectual property and regulatory pathways.
+     </p>
+    </div>
+    <div>
+     <h3>
+      Explore
+     </h3>
+     <a href="ask-sahayak.html">
+      Ask Sahayak
+     </a>
+     <a href="formulation.html">
+      Formulation Explorer
+     </a>
+     <a href="knowledge-explorer.html">
+      Knowledge Explorer
+     </a>
+    </div>
+    <div>
+     <h3>
+      Important
+     </h3>
+     <a href="evidence.html">
+      Evidence &amp; Sources
+     </a>
+     <a href="comparison.html">
+      National / International
+     </a>
+     <p class="muted">
+      Informational guidance only — not legal advice.
+     </p>
+    </div>
+   </div>
+   <div class="container" style="margin-top:25px;border-top:1px solid #31564a;padding-top:15px;font-size:13px">
+    ©
+    <span id="year">
+    </span>
+    IP-SAKTI Sahayak
+   </div>
+  </footer>
+  <script src="js/main.js">
+  </script>
+ </body>
+</html>
+

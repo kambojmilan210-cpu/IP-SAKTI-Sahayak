@@ -1,0 +1,879 @@
+[
+    {
+        "name": "Ashwagandha",
+        "aliases": [
+            "Withania somnifera",
+            "Indian ginseng"
+        ],
+        "part_used": "Root",
+        "common_forms": [
+            "powder",
+            "extract",
+            "tablet",
+            "capsule"
+        ],
+        "traditional_context": "Ayurvedic medicinal plant with longstanding traditional use.",
+        "ip_flag": "Traditional knowledge/prior-art review is important before making novelty claims based only on traditional use.",
+        "abs_flag": "Check biological-resource origin and applicability of ABS requirements based on the actual source and use.",
+        "regulatory_flag": "Classification depends on formulation, claims, dosage form and intended use; verify the current applicable category.",
+        "keywords": [
+            "ashwagandha",
+            "withania somnifera"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Tulsi",
+        "aliases": [
+            "Ocimum tenuiflorum",
+            "Ocimum sanctum",
+            "Holy Basil"
+        ],
+        "part_used": "Leaves / aerial parts",
+        "common_forms": [
+            "powder",
+            "extract",
+            "tea",
+            "tablet",
+            "capsule"
+        ],
+        "traditional_context": "Plant with longstanding traditional use in Indian systems of knowledge.",
+        "ip_flag": "Traditional-use disclosures may be relevant prior art; assess what, if anything, is technically new.",
+        "abs_flag": "Check source/provenance and whether applicable biological-resource/ABS requirements are triggered.",
+        "regulatory_flag": "Verify classification based on product claims and intended use.",
+        "keywords": [
+            "tulsi",
+            "ocimum tenuiflorum",
+            "ocimum sanctum",
+            "holy basil"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Neem",
+        "aliases": [
+            "Azadirachta indica"
+        ],
+        "part_used": "Leaves / bark / seed / oil",
+        "common_forms": [
+            "powder",
+            "extract",
+            "oil",
+            "cream",
+            "tablet"
+        ],
+        "traditional_context": "Well-documented traditional plant knowledge in South Asia.",
+        "ip_flag": "Traditional knowledge and prior-art considerations are especially important for claims based on known neem uses.",
+        "abs_flag": "Review biological-resource origin and applicable ABS requirements.",
+        "regulatory_flag": "Confirm whether the proposed product is medicinal, food, cosmetic or another category.",
+        "keywords": [
+            "neem",
+            "azadirachta indica"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Turmeric",
+        "aliases": [
+            "Curcuma longa",
+            "Haldi"
+        ],
+        "part_used": "Rhizome",
+        "common_forms": [
+            "powder",
+            "extract",
+            "capsule",
+            "cream",
+            "food"
+        ],
+        "traditional_context": "Longstanding traditional culinary and medicinal use.",
+        "ip_flag": "Known traditional uses can be relevant prior art; a novel formulation/process needs separate assessment.",
+        "abs_flag": "Check biological-resource provenance and applicable ABS requirements.",
+        "regulatory_flag": "Classification and claims determine the applicable pathway.",
+        "keywords": [
+            "turmeric",
+            "curcuma longa",
+            "haldi"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Amla",
+        "aliases": [
+            "Phyllanthus emblica",
+            "Emblica officinalis",
+            "Indian gooseberry"
+        ],
+        "part_used": "Fruit",
+        "common_forms": [
+            "powder",
+            "extract",
+            "juice",
+            "tablet",
+            "capsule"
+        ],
+        "traditional_context": "Traditional fruit used in Ayurveda and food preparations.",
+        "ip_flag": "Review traditional knowledge and prior art before asserting novelty.",
+        "abs_flag": "Check ingredient origin and applicable biological-resource rules.",
+        "regulatory_flag": "Verify product category, claims and labeling requirements.",
+        "keywords": [
+            "amla",
+            "phyllanthus emblica",
+            "emblica officinalis",
+            "indian gooseberry"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Giloy",
+        "aliases": [
+            "Tinospora cordifolia",
+            "Guduchi"
+        ],
+        "part_used": "Stem",
+        "common_forms": [
+            "powder",
+            "extract",
+            "tablet",
+            "capsule",
+            "decoction"
+        ],
+        "traditional_context": "Traditional medicinal plant used in Ayurveda.",
+        "ip_flag": "Traditional-use literature and other prior art should be checked before making novelty claims.",
+        "abs_flag": "Review source and applicable ABS requirements.",
+        "regulatory_flag": "Confirm current classification and permitted claims for the intended product.",
+        "keywords": [
+            "giloy",
+            "tinospora cordifolia",
+            "guduchi"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Brahmi",
+        "aliases": [
+            "Bacopa monnieri"
+        ],
+        "part_used": "Whole plant / aerial parts",
+        "common_forms": [
+            "powder",
+            "extract",
+            "tablet",
+            "capsule"
+        ],
+        "traditional_context": "Traditional Ayurvedic medicinal plant.",
+        "ip_flag": "Traditional disclosures may limit novelty of claims directed only to known uses.",
+        "abs_flag": "Check biological-resource provenance and applicable ABS requirements.",
+        "regulatory_flag": "Verify classification and claims under the applicable current framework.",
+        "keywords": [
+            "brahmi",
+            "bacopa monnieri"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Moringa",
+        "aliases": [
+            "Moringa oleifera",
+            "Drumstick tree"
+        ],
+        "part_used": "Leaves / seeds / pods",
+        "common_forms": [
+            "powder",
+            "extract",
+            "food",
+            "capsule"
+        ],
+        "traditional_context": "Traditional food and medicinal plant use in India and other regions.",
+        "ip_flag": "Assess prior art around known nutritional and traditional uses.",
+        "abs_flag": "Check source/provenance and applicable ABS requirements.",
+        "regulatory_flag": "Product claims and intended use affect classification.",
+        "keywords": [
+            "moringa",
+            "moringa oleifera"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Shatavari",
+        "aliases": [
+            "Asparagus racemosus"
+        ],
+        "part_used": "Root",
+        "common_forms": [
+            "powder",
+            "extract",
+            "tablet",
+            "capsule"
+        ],
+        "traditional_context": "Traditional Ayurvedic medicinal plant.",
+        "ip_flag": "Review traditional knowledge and prior art for known uses.",
+        "abs_flag": "Check biological-resource provenance and applicable ABS requirements.",
+        "regulatory_flag": "Verify classification based on dosage form, claims and intended use.",
+        "keywords": [
+            "shatavari",
+            "asparagus racemosus"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Licorice",
+        "aliases": [
+            "Glycyrrhiza glabra",
+            "Mulethi",
+            "Yashtimadhu"
+        ],
+        "part_used": "Root",
+        "common_forms": [
+            "powder",
+            "extract",
+            "tea",
+            "tablet"
+        ],
+        "traditional_context": "Traditional medicinal and food ingredient.",
+        "ip_flag": "Known traditional uses require prior-art review before novelty claims.",
+        "abs_flag": "Review provenance and applicable ABS requirements.",
+        "regulatory_flag": "Verify product category and current requirements.",
+        "keywords": [
+            "licorice",
+            "glycyrrhiza glabra",
+            "mulethi",
+            "yashtimadhu"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Triphala",
+        "aliases": [
+            "Triphala"
+        ],
+        "part_used": "Fruit of three classical plants",
+        "common_forms": [
+            "Churna",
+            "Tablet",
+            "Capsule"
+        ],
+        "traditional_context": "Classical combination of Amalaki, Haritaki and Bibhitaki.",
+        "ip_flag": "Check formulation/process novelty and branding.",
+        "abs_flag": "Check source species, collection and applicable ABS requirements.",
+        "regulatory_flag": "Classification depends on formulation, claims and intended use.",
+        "keywords": [
+            "triphala",
+            "amalaki",
+            "haritaki",
+            "bibhitaki"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Haritaki",
+        "aliases": [
+            "Harad",
+            "Terminalia chebula"
+        ],
+        "part_used": "Fruit",
+        "common_forms": [
+            "Churna",
+            "Powder",
+            "Extract"
+        ],
+        "traditional_context": "Widely used in classical Ayurvedic formulations.",
+        "ip_flag": "Check prior art and TK-related considerations before patent claims.",
+        "abs_flag": "Check applicable biological-resource and benefit-sharing requirements.",
+        "regulatory_flag": "Verify category and claims for the proposed product.",
+        "keywords": [
+            "haritaki",
+            "harad",
+            "terminalia chebula"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Bibhitaki",
+        "aliases": [
+            "Baheda",
+            "Terminalia bellirica"
+        ],
+        "part_used": "Fruit",
+        "common_forms": [
+            "Churna",
+            "Powder",
+            "Extract"
+        ],
+        "traditional_context": "Classical Ayurvedic ingredient, commonly used with Amalaki and Haritaki.",
+        "ip_flag": "Check novelty/inventive step and traditional prior art.",
+        "abs_flag": "Check applicable biological-resource rules.",
+        "regulatory_flag": "Verify product category and claims.",
+        "keywords": [
+            "bibhitaki",
+            "baheda",
+            "terminalia bellirica"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Ginger",
+        "aliases": [
+            "Shunthi",
+            "Sunthi",
+            "Adrak",
+            "Zingiber officinale"
+        ],
+        "part_used": "Rhizome",
+        "common_forms": [
+            "Powder",
+            "Extract",
+            "Tea",
+            "Tablet"
+        ],
+        "traditional_context": "Used traditionally as a digestive and warming ingredient.",
+        "ip_flag": "Assess prior art for extracts, combinations and processes.",
+        "abs_flag": "Check applicable sourcing/ABS requirements.",
+        "regulatory_flag": "Claims and dosage form can affect classification.",
+        "keywords": [
+            "ginger",
+            "shunthi",
+            "sunthi",
+            "adrak",
+            "zingiber officinale"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Black Pepper",
+        "aliases": [
+            "Maricha",
+            "Kali Mirch",
+            "Piper nigrum"
+        ],
+        "part_used": "Fruit",
+        "common_forms": [
+            "Powder",
+            "Extract",
+            "Tablet"
+        ],
+        "traditional_context": "Traditional spice and Ayurvedic ingredient; often used in combinations.",
+        "ip_flag": "Check prior art, especially for combinations and extraction processes.",
+        "abs_flag": "Check applicable biological-resource rules.",
+        "regulatory_flag": "Verify intended use and claims.",
+        "keywords": [
+            "black pepper",
+            "maricha",
+            "kali mirch",
+            "piper nigrum"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Cinnamon",
+        "aliases": [
+            "Tvak",
+            "Dalchini",
+            "Cinnamomum verum",
+            "Cinnamomum cassia"
+        ],
+        "part_used": "Bark",
+        "common_forms": [
+            "Powder",
+            "Extract",
+            "Tea"
+        ],
+        "traditional_context": "Traditional aromatic spice and Ayurvedic ingredient.",
+        "ip_flag": "Check prior art for compositions and extracts.",
+        "abs_flag": "Confirm species/source and applicable ABS requirements.",
+        "regulatory_flag": "Category depends on product presentation and claims.",
+        "keywords": [
+            "cinnamon",
+            "tvak",
+            "dalchini",
+            "cinnamomum"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Cardamom",
+        "aliases": [
+            "Ela",
+            "Choti Elaichi",
+            "Elettaria cardamomum"
+        ],
+        "part_used": "Fruit/seed",
+        "common_forms": [
+            "Powder",
+            "Extract",
+            "Tea"
+        ],
+        "traditional_context": "Traditional aromatic ingredient used in formulations and foods.",
+        "ip_flag": "Check novelty for any specific combination/process.",
+        "abs_flag": "Check applicable sourcing requirements.",
+        "regulatory_flag": "Verify food/medicine/cosmetic positioning.",
+        "keywords": [
+            "cardamom",
+            "ela",
+            "elaichi",
+            "elettaria cardamomum"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Fennel",
+        "aliases": [
+            "Shatapushpa",
+            "Saunf",
+            "Foeniculum vulgare"
+        ],
+        "part_used": "Fruit/seed",
+        "common_forms": [
+            "Powder",
+            "Tea",
+            "Extract"
+        ],
+        "traditional_context": "Traditional culinary and Ayurvedic ingredient.",
+        "ip_flag": "Assess prior art and traditional knowledge overlap.",
+        "abs_flag": "Check applicable biological-resource requirements.",
+        "regulatory_flag": "Verify intended use and claims.",
+        "keywords": [
+            "fennel",
+            "shatapushpa",
+            "saunf",
+            "foeniculum vulgare"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Cumin",
+        "aliases": [
+            "Jiraka",
+            "Jeera",
+            "Cuminum cyminum"
+        ],
+        "part_used": "Seed",
+        "common_forms": [
+            "Powder",
+            "Extract",
+            "Food preparation"
+        ],
+        "traditional_context": "Traditional spice and Ayurvedic ingredient.",
+        "ip_flag": "Check prior art for novel formulations/processes.",
+        "abs_flag": "Check sourcing and applicable ABS requirements.",
+        "regulatory_flag": "Verify product category and claims.",
+        "keywords": [
+            "cumin",
+            "jiraka",
+            "jeera",
+            "cuminum cyminum"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Fenugreek",
+        "aliases": [
+            "Methi",
+            "Methi Seed",
+            "Trigonella foenum-graecum"
+        ],
+        "part_used": "Seed",
+        "common_forms": [
+            "Powder",
+            "Extract",
+            "Food preparation"
+        ],
+        "traditional_context": "Traditional food and Ayurvedic ingredient.",
+        "ip_flag": "Check prior art for extracts and combinations.",
+        "abs_flag": "Check applicable ABS requirements.",
+        "regulatory_flag": "Claims and intended use may affect category.",
+        "keywords": [
+            "fenugreek",
+            "methi",
+            "trigonella foenum-graecum"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Shankhpushpi",
+        "aliases": [
+            "Shankhapushpi",
+            "Convolvulus pluricaulis"
+        ],
+        "part_used": "Whole plant",
+        "common_forms": [
+            "Churna",
+            "Syrup",
+            "Extract",
+            "Tablet"
+        ],
+        "traditional_context": "Traditionally used in Ayurvedic preparations associated with cognition and mental wellness.",
+        "ip_flag": "Check traditional prior art and formulation novelty.",
+        "abs_flag": "Check applicable biological-resource requirements.",
+        "regulatory_flag": "Do not treat traditional use as proof of a modern medical claim.",
+        "keywords": [
+            "shankhpushpi",
+            "shankhapushpi",
+            "convolvulus pluricaulis"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Arjuna",
+        "aliases": [
+            "Arjuna",
+            "Terminalia arjuna"
+        ],
+        "part_used": "Bark",
+        "common_forms": [
+            "Churna",
+            "Extract",
+            "Tablet",
+            "Capsule"
+        ],
+        "traditional_context": "Classical Ayurvedic ingredient derived from bark.",
+        "ip_flag": "Check prior art and TK-related literature.",
+        "abs_flag": "Check applicable biological-resource requirements.",
+        "regulatory_flag": "Verify claims, dosage form and category.",
+        "keywords": [
+            "arjuna",
+            "terminalia arjuna"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Manjistha",
+        "aliases": [
+            "Manjishta",
+            "Rubia cordifolia"
+        ],
+        "part_used": "Root/rhizome",
+        "common_forms": [
+            "Churna",
+            "Extract",
+            "Tablet"
+        ],
+        "traditional_context": "Traditional Ayurvedic botanical ingredient.",
+        "ip_flag": "Check prior art for extracts, combinations and processes.",
+        "abs_flag": "Check applicable ABS requirements.",
+        "regulatory_flag": "Verify intended use and claims.",
+        "keywords": [
+            "manjistha",
+            "manjishta",
+            "rubia cordifolia"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Gudmar",
+        "aliases": [
+            "Gymnema",
+            "Gurmar",
+            "Gymnema sylvestre"
+        ],
+        "part_used": "Leaves",
+        "common_forms": [
+            "Powder",
+            "Extract",
+            "Tablet",
+            "Capsule"
+        ],
+        "traditional_context": "Traditional botanical used in Ayurvedic preparations.",
+        "ip_flag": "Check traditional prior art before asserting novelty.",
+        "abs_flag": "Check applicable biological-resource rules.",
+        "regulatory_flag": "Claims and intended use determine regulatory pathway.",
+        "keywords": [
+            "gudmar",
+            "gurmar",
+            "gymnema",
+            "gymnema sylvestre"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Punarnava",
+        "aliases": [
+            "Punarnava",
+            "Boerhavia diffusa"
+        ],
+        "part_used": "Whole plant/root",
+        "common_forms": [
+            "Churna",
+            "Extract",
+            "Tablet",
+            "Capsule"
+        ],
+        "traditional_context": "Traditional Ayurvedic botanical ingredient.",
+        "ip_flag": "Check prior art and TK documentation.",
+        "abs_flag": "Check applicable ABS requirements.",
+        "regulatory_flag": "Verify classification and claims.",
+        "keywords": [
+            "punarnava",
+            "boerhavia diffusa"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Bala",
+        "aliases": [
+            "Bala",
+            "Sida cordifolia"
+        ],
+        "part_used": "Root/whole plant",
+        "common_forms": [
+            "Churna",
+            "Extract",
+            "Oil"
+        ],
+        "traditional_context": "Traditional Ayurvedic ingredient.",
+        "ip_flag": "Check prior art and species-specific literature.",
+        "abs_flag": "Check applicable sourcing/ABS requirements.",
+        "regulatory_flag": "Verify current permitted use and product category.",
+        "keywords": [
+            "bala",
+            "sida cordifolia"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Bhringraj",
+        "aliases": [
+            "Bhringaraj",
+            "Eclipta alba",
+            "Eclipta prostrata"
+        ],
+        "part_used": "Whole plant",
+        "common_forms": [
+            "Oil",
+            "Churna",
+            "Extract",
+            "Tablet"
+        ],
+        "traditional_context": "Traditional Ayurvedic botanical ingredient, commonly seen in hair and wellness preparations.",
+        "ip_flag": "Check prior art for formulations and cosmetic uses.",
+        "abs_flag": "Check applicable biological-resource requirements.",
+        "regulatory_flag": "Cosmetic versus medicinal positioning depends on claims and presentation.",
+        "keywords": [
+            "bhringraj",
+            "bhringaraj",
+            "eclipta alba",
+            "eclipta prostrata"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Aloe Vera",
+        "aliases": [
+            "Aloe",
+            "Ghritkumari",
+            "Aloe barbadensis"
+        ],
+        "part_used": "Leaf gel/latex depending on preparation",
+        "common_forms": [
+            "Gel",
+            "Juice",
+            "Extract",
+            "Cosmetic"
+        ],
+        "traditional_context": "Widely used in traditional preparations and modern cosmetic/food products.",
+        "ip_flag": "Check prior art for extraction, stabilization and combinations.",
+        "abs_flag": "Check applicable sourcing/ABS requirements.",
+        "regulatory_flag": "Product category strongly depends on intended use and claims.",
+        "keywords": [
+            "aloe vera",
+            "aloe",
+            "ghritkumari",
+            "aloe barbadensis"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Saffron",
+        "aliases": [
+            "Kesar",
+            "Kumkuma",
+            "Crocus sativus"
+        ],
+        "part_used": "Stigma",
+        "common_forms": [
+            "Powder",
+            "Extract",
+            "Food",
+            "Cosmetic"
+        ],
+        "traditional_context": "Traditional spice and ingredient used in Ayurveda and foods.",
+        "ip_flag": "Check provenance, branding and formulation prior art.",
+        "abs_flag": "Check applicable sourcing requirements.",
+        "regulatory_flag": "Verify food/cosmetic/medicinal positioning.",
+        "keywords": [
+            "saffron",
+            "kesar",
+            "kumkuma",
+            "crocus sativus"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Clove",
+        "aliases": [
+            "Lavanga",
+            "Laung",
+            "Syzygium aromaticum"
+        ],
+        "part_used": "Flower bud",
+        "common_forms": [
+            "Powder",
+            "Oil",
+            "Extract"
+        ],
+        "traditional_context": "Traditional aromatic spice and Ayurvedic ingredient.",
+        "ip_flag": "Check prior art for oil, extract and combination claims.",
+        "abs_flag": "Check applicable biological-resource requirements.",
+        "regulatory_flag": "Verify category and claims.",
+        "keywords": [
+            "clove",
+            "lavanga",
+            "laung",
+            "syzygium aromaticum"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Ashoka",
+        "aliases": [
+            "Ashoka",
+            "Saraca asoca"
+        ],
+        "part_used": "Bark",
+        "common_forms": [
+            "Churna",
+            "Extract",
+            "Tablet",
+            "Syrup"
+        ],
+        "traditional_context": "Traditional Ayurvedic botanical ingredient.",
+        "ip_flag": "Check prior art and traditional knowledge documentation.",
+        "abs_flag": "Check applicable sourcing/ABS requirements.",
+        "regulatory_flag": "Verify intended use and claims.",
+        "keywords": [
+            "ashoka",
+            "saraca asoca"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Gokshura",
+        "aliases": [
+            "Gokhru",
+            "Tribulus terrestris"
+        ],
+        "part_used": "Fruit/whole plant",
+        "common_forms": [
+            "Churna",
+            "Extract",
+            "Tablet",
+            "Capsule"
+        ],
+        "traditional_context": "Traditional Ayurvedic botanical ingredient.",
+        "ip_flag": "Check prior art for extracts and combinations.",
+        "abs_flag": "Check applicable sourcing/ABS requirements.",
+        "regulatory_flag": "Verify category and claims.",
+        "keywords": [
+            "gokshura",
+            "gokhru",
+            "tribulus terrestris"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Musta",
+        "aliases": [
+            "Nagarmotha",
+            "Cyperus rotundus"
+        ],
+        "part_used": "Rhizome/tuber",
+        "common_forms": [
+            "Churna",
+            "Extract",
+            "Tablet"
+        ],
+        "traditional_context": "Traditional Ayurvedic botanical ingredient.",
+        "ip_flag": "Check prior art and TK documentation.",
+        "abs_flag": "Check applicable ABS requirements.",
+        "regulatory_flag": "Verify intended use and claims.",
+        "keywords": [
+            "musta",
+            "nagarmotha",
+            "cyperus rotundus"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Vasa",
+        "aliases": [
+            "Vasaka",
+            "Adhatoda vasica",
+            "Justicia adhatoda"
+        ],
+        "part_used": "Leaves",
+        "common_forms": [
+            "Syrup",
+            "Churna",
+            "Extract",
+            "Tablet"
+        ],
+        "traditional_context": "Classical Ayurvedic botanical ingredient.",
+        "ip_flag": "Check traditional prior art and formulation novelty.",
+        "abs_flag": "Check applicable biological-resource requirements.",
+        "regulatory_flag": "Verify product category and claims.",
+        "keywords": [
+            "vasa",
+            "vasaka",
+            "adhatoda vasica",
+            "justicia adhatoda"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Kalmegh",
+        "aliases": [
+            "Andrographis paniculata",
+            "Bhunimba"
+        ],
+        "part_used": "Whole plant",
+        "common_forms": [
+            "Churna",
+            "Extract",
+            "Tablet",
+            "Capsule"
+        ],
+        "traditional_context": "Traditional Ayurvedic botanical ingredient.",
+        "ip_flag": "Check prior art for extracts and combinations.",
+        "abs_flag": "Check applicable sourcing/ABS requirements.",
+        "regulatory_flag": "Verify intended use and claims.",
+        "keywords": [
+            "kalmegh",
+            "andrographis paniculata",
+            "bhunimba"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    },
+    {
+        "name": "Chirata",
+        "aliases": [
+            "Chirayata",
+            "Swertia chirata"
+        ],
+        "part_used": "Whole plant",
+        "common_forms": [
+            "Churna",
+            "Extract",
+            "Tablet"
+        ],
+        "traditional_context": "Traditional bitter botanical used in Ayurvedic preparations.",
+        "ip_flag": "Check prior art and traditional knowledge sources.",
+        "abs_flag": "Check applicable sourcing/ABS requirements.",
+        "regulatory_flag": "Verify category and claims.",
+        "keywords": [
+            "chirata",
+            "chirayata",
+            "swertia chirata"
+        ],
+        "data_note": "Prototype educational record; verify against current authoritative sources before legal/regulatory decisions."
+    }
+]
