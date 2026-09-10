@@ -7,10 +7,16 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+
 BASE = Path(__file__).resolve().parent
 DATA = BASE / "data"
 
-app = FastAPI(title="IP-SAKTI Sahayak API", version="1.1.0")
+
+app = FastAPI(
+    title="IP-SAKTI Sahayak API",
+    version="1.1.0"
+)
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -97,6 +103,7 @@ def jurisdiction_sources(jurisdiction: str):
                 str(x.get("summary", ""))
             ).lower()
         ]
+
         return india if india else SOURCES[:4]
 
     international_words = [
@@ -126,7 +133,7 @@ def health():
     return {
         "status": "ok",
         "service": "IP-SAKTI Sahayak",
-        "version": "1.1.0",
+        "version": "1.1.0"
     }
 
 
@@ -136,30 +143,30 @@ def retrieve(question: str, jurisdiction: str):
 
     for item in KNOWLEDGE:
         text = (
-            item["title"] + " " +
-            item["summary"] + " " +
-            item["category"]
+            str(item.get("title", "")) + " " +
+            str(item.get("summary", "")) + " " +
+            str(item.get("category", ""))
         ).lower()
 
-        score = sum(1 for t in terms if t in text)
+        score = sum(1 for term in terms if term in text)
 
         if jurisdiction.lower() in text:
             score += 2
 
-        if score:
+        if score > 0:
             scored.append((score, item))
 
     scored.sort(key=lambda x: x[0], reverse=True)
 
-    return [x[1] for x in scored[:4]]
+    return [item for score, item in scored[:4]]
 
 
 @app.post("/ask")
 def ask(req: AskRequest):
-    q = req.question.strip()
+    question = req.question.strip()
     hindi = is_hindi(req.language)
 
-    if not q:
+    if not question:
         return {
             "answer": (
                 "कृपया अपना प्रश्न दर्ज करें।"
@@ -176,15 +183,15 @@ def ask(req: AskRequest):
             )
         }
 
-    hits = retrieve(q, req.jurisdiction)
-    lower = q.lower()
+    hits = retrieve(question, req.jurisdiction)
+    lower = question.lower()
 
     if not hits:
         if hindi:
             answer = (
                 "वर्तमान curated knowledge base में पर्याप्त matching "
-                "evidence नहीं मिला। गलत उत्तर बनाने के बजाय सिस्टम "
-                "उत्तर देने से बच रहा है।"
+                "evidence नहीं मिला। सिस्टम अनुमान लगाकर उत्तर देने के "
+                "बजाय abstain कर रहा है।"
             )
 
             steps = [
@@ -214,25 +221,31 @@ def ask(req: AskRequest):
                 "Production deployment में authoritative version-tracked sources आवश्यक हैं।"
                 if hindi
                 else
-                "The prototype uses a limited local knowledge base. Production deployment should use a version-tracked authoritative corpus."
+                "The prototype uses a limited local knowledge base. "
+                "Production deployment should use a version-tracked authoritative corpus."
             )
         }
 
-    if "patent" in lower or "patentable" in lower or "novel" in lower:
+    # PATENT
+    if (
+        "patent" in lower
+        or "patentable" in lower
+        or "novel" in lower
+    ):
 
         if hindi:
             answer = (
                 "प्रारंभिक patentability review में पहले यह देखें कि "
                 "तकनीकी रूप से क्या नया है और फिर prior-art search करें। "
-                "Ayurveda से जुड़े विषयों में traditional knowledge और "
-                "अन्य prior-art sources भी जाँचना आवश्यक है। यह केवल "
-                "एक प्रारंभिक संकेतक है, अंतिम patentability determination नहीं।"
+                "Ayurveda से जुड़े विषयों में Traditional Knowledge और "
+                "अन्य prior-art sources भी जाँचना आवश्यक है। "
+                "यह केवल प्रारंभिक संकेतक है, अंतिम patentability determination नहीं।"
             )
 
             steps = [
                 "Novel technical features को स्पष्ट करें।",
                 "Patent और non-patent prior art search करें।",
-                "Relevant traditional-knowledge/prior-art sources जाँचें।",
+                "Relevant Traditional Knowledge/prior-art sources जाँचें।",
                 "Filing से पहले professional patentability opinion लें।"
             ]
 
@@ -240,26 +253,26 @@ def ask(req: AskRequest):
             answer = (
                 "For a preliminary patentability review, focus first on "
                 "what is technically new and then perform a prior-art search. "
-                "For Ayurveda-related subject matter, also check whether "
-                "the claimed knowledge or material is already disclosed in "
-                "relevant traditional-knowledge or other prior-art sources."
+                "For Ayurveda-related subject matter, also check traditional "
+                "knowledge and other prior-art sources."
             )
 
             steps = [
                 "Define the novel technical features.",
                 "Search patent and non-patent prior art.",
-                "Check traditional-knowledge/prior-art pointers where relevant.",
+                "Check traditional-knowledge/prior-art sources where relevant.",
                 "Obtain a professional patentability opinion before filing."
             ]
 
+    # TRADEMARK
     elif "trademark" in lower or "brand" in lower:
 
         if hindi:
             answer = (
                 "Trademark strategy मुख्य रूप से distinctive brand name, "
-                "identifier या logo की protection से संबंधित है। Adoption "
-                "या filing से पहले clearance search और सही class/jurisdiction "
-                "चुनना आवश्यक है।"
+                "identifier या logo की protection से संबंधित है। "
+                "Adoption या filing से पहले clearance search और सही "
+                "class/jurisdiction चुनना आवश्यक है।"
             )
 
             steps = [
@@ -282,20 +295,26 @@ def ask(req: AskRequest):
                 "File and monitor the application."
             ]
 
-    elif "abs" in lower or "nagoya" in lower or "biological" in lower:
+    # ABS / TRADITIONAL KNOWLEDGE
+    elif (
+        "abs" in lower
+        or "nagoya" in lower
+        or "biological" in lower
+        or "traditional knowledge" in lower
+    ):
 
         if hindi:
             answer = (
                 "यदि innovation में biological resources या associated "
-                "traditional knowledge का उपयोग है, तो यह निर्धारित करें "
+                "Traditional Knowledge का उपयोग है, तो यह निर्धारित करें "
                 "कि access-and-benefit-sharing obligations लागू होती हैं या नहीं। "
-                "सटीक obligations source और applicable national/international "
+                "सटीक requirements source और applicable national/international "
                 "framework पर निर्भर करती हैं।"
             )
 
             steps = [
                 "Biological resource का origin और access history record करें।",
-                "Associated traditional knowledge identify करें।",
+                "Associated Traditional Knowledge identify करें।",
                 "Applicable national ABS framework check करें।",
                 "Benefit-sharing या permissions लागू होने पर specialist advice लें।"
             ]
@@ -314,6 +333,7 @@ def ask(req: AskRequest):
                 "Seek specialist advice if benefit-sharing or permissions may apply."
             ]
 
+    # REGULATORY
     elif (
         "regulat" in lower
         or "medicine" in lower
@@ -349,6 +369,7 @@ def ask(req: AskRequest):
                 "Prepare applicable evidence and documents."
             ]
 
+    # GENERAL
     else:
 
         if hindi:
@@ -380,13 +401,18 @@ def ask(req: AskRequest):
                 "Escalate if the evidence is insufficient or case-specific."
             ]
 
-    src = [source_record(h) for h in hits]
+    selected_sources = jurisdiction_sources(req.jurisdiction)
 
     return {
         "answer": answer,
         "confidence": "Medium",
         "next_steps": steps,
-        "sources": src,
+        "sources": [
+            source_record(item)
+            for item in (
+                hits if hits else selected_sources[:4]
+            )
+        ],
         "disclaimer": (
             "प्रारंभिक सूचना आधारित मार्गदर्शन; यह legal advice, "
             "regulatory approval, certification या final patentability "
@@ -402,7 +428,10 @@ def ask(req: AskRequest):
     matches = []
 
     for item in INGREDIENTS:
-        if any(k.lower() in text for k in item["keywords"]):
+        if any(
+            keyword.lower() in text
+            for keyword in item.get("keywords", [])
+        ):
             matches.append(item)
 
     return matches
@@ -416,13 +445,13 @@ def ingredients(q: Optional[str] = None):
     terms = re.findall(r"[a-zA-Z]{3,}", q.lower())
 
     items = [
-        x for x in INGREDIENTS
+        item for item in INGREDIENTS
         if any(
-            t in (
-                x["name"] + " " +
-                " ".join(x["aliases"])
+            term in (
+                str(item.get("name", "")) + " " +
+                " ".join(item.get("aliases", []))
             ).lower()
-            for t in terms
+            for term in terms
         )
     ]
 
@@ -441,18 +470,16 @@ def classify(req: FormulationRequest):
     matched = match_ingredients(text_all)
     hindi = is_hindi(req.language)
 
-    # -----------------------------
     # PRODUCT CLASSIFICATION
-    # -----------------------------
 
     if any(
-        x in text_all
-        for x in ["cosmetic", "cream", "skin", "shampoo", "soap"]
+        word in text_all
+        for word in ["cosmetic", "cream", "skin", "shampoo", "soap"]
     ):
         category = "Cosmetic"
 
         regulatory = (
-            "Cosmetic classification, safety, labeling and manufacturing "
+            "Cosmetic classification, safety, labeling और manufacturing "
             "requirements verify करें।"
             if hindi else
             "Confirm cosmetic classification and applicable safety, "
@@ -460,8 +487,8 @@ def classify(req: FormulationRequest):
         )
 
     elif any(
-        x in text_all
-        for x in [
+        word in text_all
+        for word in [
             "nutraceutical",
             "food",
             "nutrition",
@@ -481,8 +508,8 @@ def classify(req: FormulationRequest):
         )
 
     elif any(
-        x in text_all
-        for x in ["new drug", "clinical", "novel drug"]
+        word in text_all
+        for word in ["new drug", "clinical", "novel drug"]
     ):
         category = "New / non-classical drug"
 
@@ -531,30 +558,31 @@ def classify(req: FormulationRequest):
             "within the applicable classical/generic medicine pathway."
         )
 
-    # -----------------------------
     # INGREDIENT ANALYSIS
-    # -----------------------------
 
     ingredient_notes = []
 
     for item in matched:
         ingredient_notes.append({
-            "name": item["name"],
-            "part_used": item["part_used"],
-            "aliases": item["aliases"],
-            "traditional_context": item["traditional_context"],
-            "ip_flag": item["ip_flag"],
-            "abs_flag": item["abs_flag"],
-            "regulatory_flag": item["regulatory_flag"],
-            "common_forms": item["common_forms"]
+            "name": item.get("name", ""),
+            "part_used": item.get("part_used", ""),
+            "aliases": item.get("aliases", []),
+            "traditional_context": item.get(
+                "traditional_context", ""
+            ),
+            "ip_flag": item.get("ip_flag", ""),
+            "abs_flag": item.get("abs_flag", ""),
+            "regulatory_flag": item.get(
+                "regulatory_flag", ""
+            ),
+            "common_forms": item.get(
+                "common_forms", []
+            )
         })
 
-    # -----------------------------
-    # IP + TK + ABS ANALYSIS
-    # -----------------------------
+    # IP / TK / ABS
 
     if matched:
-
         if hindi:
             abs_text = (
                 "Detected ingredient(s) का traditional/biological-resource "
@@ -563,7 +591,7 @@ def classify(req: FormulationRequest):
 
             ip = (
                 "एक या अधिक known traditional ingredients detect हुए हैं। "
-                "Novelty claim करने से पहले traditional knowledge और prior art "
+                "Novelty claim करने से पहले Traditional Knowledge और prior art "
                 "review करें। यदि formulation/process में नया technical contribution "
                 "है, तो अलग patentability analysis आवश्यक होगा।"
             )
@@ -581,7 +609,6 @@ def classify(req: FormulationRequest):
             )
 
     else:
-
         if hindi:
             abs_text = (
                 "Prototype database में कोई ingredient confidently match नहीं हुआ। "
@@ -604,9 +631,7 @@ def classify(req: FormulationRequest):
                 "a new technical contribution and conduct a prior-art search."
             )
 
-    # -----------------------------
     # FINAL RESPONSE
-    # -----------------------------
 
     if hindi:
         explanation = (
@@ -617,7 +642,7 @@ def classify(req: FormulationRequest):
         next_steps = [
             "Product classification को current applicable rules से verify करें।",
             "Ingredient identity, plant part, source और provenance confirm करें।",
-            "Matched ingredients के traditional-knowledge/prior-art aspects review करें।",
+            "Matched ingredients के Traditional Knowledge/prior-art aspects review करें।",
             "Classification को regulatory journey से map करें।",
             "Appropriate IP protection route review करें।"
         ]
@@ -648,8 +673,8 @@ def classify(req: FormulationRequest):
         "matched_ingredients": ingredient_notes,
         "next_steps": next_steps,
         "sources": [
-            source_record(x)
-            for x in selected_sources[:4]
+            source_record(item)
+            for item in selected_sources[:4]
         ]
     }
     @app.post("/ip-check")
@@ -669,51 +694,51 @@ def ip_check(req: IPRequest):
             {
                 "name": "Patent",
                 "status": "Review",
-                "reason": "New technical solution होने पर relevant हो सकता है; prior-art search आवश्यक है।"
+                "reason": "New technical solution होने पर relevant हो सकता है; prior-art search आवश्यक है."
             },
             {
                 "name": "Trademark",
                 "status": "Review",
-                "reason": "Distinctive brand name, product name या logo के लिए relevant हो सकता है।"
+                "reason": "Distinctive brand name, product name या logo के लिए relevant हो सकता है."
             },
             {
                 "name": "Trade Secret",
                 "status": "Possible",
-                "reason": "Confidential know-how को secrecy maintain करके protect किया जा सकता है।"
+                "reason": "Confidential know-how को secrecy maintain करके protect किया जा सकता है."
             },
             {
                 "name": "Design",
                 "status": "Case-dependent",
-                "reason": "Qualifying visual या aesthetic product features के लिए relevant हो सकता है।"
+                "reason": "Qualifying visual या aesthetic product features के लिए relevant हो सकता है."
             },
             {
                 "name": "Copyright",
                 "status": "Case-dependent",
-                "reason": "Original artwork, documentation या software जैसी expression को protect कर सकता है।"
+                "reason": "Original artwork, documentation या software जैसी expression को protect कर सकता है."
             },
             {
                 "name": "GI",
                 "status": "Case-dependent",
-                "reason": "Applicable geographical linkage और GI requirements पूरी होने पर relevant हो सकता है।"
+                "reason": "Applicable geographical linkage और GI requirements पूरी होने पर relevant हो सकता है."
             }
         ]
 
         checks = [
-            "Structured prior-art search करें।",
-            "Relevant TK/prior-art databases check करें।",
-            "Inventorship, development records और dates document करें।",
-            "Public disclosure से पहले appropriate IP route assess करें।"
+            "Structured prior-art search करें.",
+            "Relevant TK/prior-art databases check करें.",
+            "Inventorship, development records और dates document करें.",
+            "Public disclosure से पहले appropriate IP route assess करें."
         ]
 
         summary = (
-            "Prototype केवल preliminary indicators देता है। "
+            "Prototype केवल preliminary indicators देता है. "
             "High-attention result का मतलब यह नहीं है कि innovation unprotectable है; "
-            "इसका मतलब है कि अधिक evidence की आवश्यकता है।"
+            "इसका मतलब है कि अधिक evidence की आवश्यकता है."
         )
 
         disclaimer = (
             "केवल प्रारंभिक informational guidance; यह legal advice, "
-            "regulatory approval, certification या final patentability determination नहीं है।"
+            "regulatory approval, certification या final patentability determination नहीं है."
         )
 
     else:
@@ -772,7 +797,7 @@ def ip_check(req: IPRequest):
         if hindi:
             checks.insert(
                 1,
-                "Traditional knowledge का source और nature record करें तथा applicable protection/ABS considerations examine करें।"
+                "Traditional Knowledge का source और nature record करें तथा applicable protection/ABS considerations examine करें."
             )
         else:
             checks.insert(
@@ -788,8 +813,8 @@ def ip_check(req: IPRequest):
         "routes": routes,
         "checks": checks,
         "sources": [
-            source_record(x)
-            for x in selected_sources[:4]
+            source_record(item)
+            for item in selected_sources[:4]
         ],
         "disclaimer": disclaimer
     }
@@ -803,34 +828,34 @@ def regulatory(req: RegulatoryRequest):
         common = [
             {
                 "title": "Classification confirm करें",
-                "detail": "Current applicable rules और definitions के अनुसार product category verify करें।"
+                "detail": "Current applicable rules और definitions के अनुसार product category verify करें."
             },
             {
                 "title": "Competent authority identify करें",
-                "detail": "Applicable authority, licence/registration route और current procedure identify करें।"
+                "detail": "Applicable authority, licence/registration route और current procedure identify करें."
             },
             {
                 "title": "Evidence तैयार करें",
-                "detail": "Formulation, ingredients, quality, safety, efficacy, labeling और applicable records compile करें।"
+                "detail": "Formulation, ingredients, quality, safety, efficacy, labeling और applicable records compile करें."
             },
             {
                 "title": "IP और ABS check करें",
-                "detail": "Relevant होने पर IP strategy तथा traditional-knowledge/biological-resource obligations review करें।"
+                "detail": "Relevant होने पर IP strategy तथा traditional-knowledge/biological-resource obligations review करें."
             },
             {
                 "title": "Submit / Comply",
-                "detail": "Current authority procedure follow करें और approval/registration के बाद ongoing compliance maintain करें।"
+                "detail": "Current authority procedure follow करें और approval/registration के बाद ongoing compliance maintain करें."
             }
         ]
 
         summary = (
             "इसे navigation checklist के रूप में उपयोग करें, "
-            "regulatory approval decision के रूप में नहीं।"
+            "regulatory approval decision के रूप में नहीं."
         )
 
         disclaimer = (
-            "Requirements बदल सकती हैं। Regulatory action लेने से पहले "
-            "current official rules verify करें।"
+            "Requirements बदल सकती हैं. Regulatory action लेने से पहले "
+            "current official rules verify करें."
         )
 
     else:
@@ -868,8 +893,8 @@ def regulatory(req: RegulatoryRequest):
     if req.jurisdiction != "India":
         if hindi:
             common[1]["detail"] = (
-                "International requirements jurisdiction के अनुसार अलग होते हैं। "
-                "Target country/region select करके उसकी current competent authority और procedure verify करें।"
+                "International requirements jurisdiction के अनुसार अलग होते हैं. "
+                "Target country/region select करके उसकी current competent authority और procedure verify करें."
             )
         else:
             common[1]["detail"] = (
@@ -885,8 +910,8 @@ def regulatory(req: RegulatoryRequest):
         "summary": summary,
         "steps": common,
         "sources": [
-            source_record(x)
-            for x in selected_sources[:4]
+            source_record(item)
+            for item in selected_sources[:4]
         ],
         "disclaimer": disclaimer
     }
@@ -900,14 +925,14 @@ def knowledge(q: Optional[str] = None):
         terms = re.findall(r"[a-zA-Z]{3,}", q.lower())
 
         items = [
-            x for x in KNOWLEDGE
+            item for item in KNOWLEDGE
             if any(
-                t in (
-                    x["title"] + " " +
-                    x["summary"] + " " +
-                    x["category"]
+                term in (
+                    str(item.get("title", "")) + " " +
+                    str(item.get("summary", "")) + " " +
+                    str(item.get("category", ""))
                 ).lower()
-                for t in terms
+                for term in terms
             )
         ]
 
