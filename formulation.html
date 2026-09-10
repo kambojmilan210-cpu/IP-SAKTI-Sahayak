@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
+
   <meta
-    content="width=device-width,initial-scale=1"
     name="viewport"
+    content="width=device-width,initial-scale=1"
   >
 
   <title>
@@ -13,14 +15,15 @@
   </title>
 
   <meta
-    content="IP-SAKTI Sahayak — source-grounded AI guidance for Ayurveda IP and regulatory pathways."
     name="description"
+    content="IP-SAKTI Sahayak — source-grounded AI guidance for Ayurveda IP and regulatory pathways."
   >
 
   <link
     href="css/style.css"
     rel="stylesheet"
   >
+
 </head>
 
 
@@ -38,6 +41,7 @@
         class="brand"
         href="index.html"
       >
+
         <span class="brand-mark">
           S
         </span>
@@ -45,6 +49,7 @@
         <span>
           IP-SAKTI Sahayak
         </span>
+
       </a>
 
 
@@ -105,10 +110,11 @@
 
 
       <select
-        aria-label="Language"
         class="lang-select"
         id="language"
+        aria-label="Language"
       >
+
         <option value="English">
           English
         </option>
@@ -116,6 +122,7 @@
         <option value="Hindi">
           हिन्दी
         </option>
+
       </select>
 
     </div>
@@ -124,925 +131,1157 @@
 
 
   <!-- =========================
-       MAIN CONTENT
+       MAIN CONTENT START
        ========================= -->
 
   <main class="section">
 
     <div class="container">
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <span class="eyebrow">IP-SAKTI Sahayak</span>
 
-      <div class="section-head">
+        <h1>Formulation Explorer</h1>
 
-        <div>
-
-          <div class="kicker">
-            Product classification
-          </div>
-
-          <h1 style="font-size:44px">
-            Ayurveda Formulation Explorer
-          </h1>
-
-          <p>
-            Classify a product/formulation and connect it
-            to preliminary IP, regulatory and ABS considerations.
-          </p>
-
-        </div>
-
+        <p class="lead">
+          Check your Ayurveda formulation for known ingredients,
+          possible similarities, preliminary IP routes and evidence needs.
+        </p>
       </div>
 
 
-      <!-- =========================
-           FORMULATION FORM
-           ========================= -->
-
+      <!-- FORMULATION FORM -->
       <div class="card form-card">
 
-        <div class="form-grid">
-
-
-          <!-- FORMULATION NAME -->
-
-          <div class="field">
-
-            <label>
-              Formulation name
-            </label>
-
-            <input
-              id="fName"
-              type="text"
-              placeholder="e.g. Ashwagandha botanical tablet"
-            >
-
-          </div>
-
-
-          <!-- DOSAGE FORM -->
-
-          <div class="field">
-
-            <label>
-              Dosage form
-            </label>
-
-            <input
-              id="fDose"
-              type="text"
-              placeholder="Tablet / powder / syrup / cream"
-            >
-
-          </div>
-
-
-          <!-- INGREDIENTS -->
-
-          <div class="field full">
-
-            <label>
-              Ingredients
-            </label>
-
-            <textarea
-              id="fIngredients"
-              placeholder="Type ingredient name (e.g. Ashwagandha, Tulsi, Neem)…"
-            ></textarea>
-
-
-            <div
-              id="ingredientSuggestions"
-              style="display:grid;gap:6px;margin-top:6px"
-            >
-            </div>
-
-
-            <div
-              id="ingredientChips"
-              style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px"
-            >
-            </div>
-
-          </div>
-
-
-          <!-- INTENDED USE -->
-
-          <div class="field">
-
-            <label>
-              Intended use
-            </label>
-
-            <input
-              id="fUse"
-              type="text"
-              placeholder="Describe intended use"
-            >
-
-          </div>
-
-
-          <!-- NOVELTY -->
-
-          <div class="field">
-
-            <label>
-              Traditional or novel?
-            </label>
-
-            <select id="fNovel">
-
-              <option value="Traditional">
-                Traditional
-              </option>
-
-              <option value="Novel / modified">
-                Novel / modified
-              </option>
-
-              <option value="Unknown">
-                Unknown
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <!-- JURISDICTION -->
-
-          <div class="field">
-
-            <label>
-              Jurisdiction
-            </label>
-
-            <select id="fJurisdiction">
-
-              <option value="India">
-                India
-              </option>
-
-              <option value="International">
-                International
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <!-- CLASSIFY BUTTON -->
-
-        <button
-          class="btn"
-          id="fBtn"
-          type="button"
-        >
-          Classify Formulation →
-        </button>
-
-
-        <!-- RESULT CONTAINER -->
-
-        <div
-          class="result card"
-          id="fResult"
-        >
-        </div>
-
-      </div>
-     <main class="section">
-    <div class="container">
-
-      <div class="section-head">
-        <div>
-          <div class="kicker">Product classification</div>
-
-          <h1 style="font-size:44px">
-            Ayurveda Formulation Explorer
-          </h1>
-
-          <p>
-            Classify a product/formulation and connect it to preliminary
-            IP, regulatory and ABS considerations.
-          </p>
-        </div>
-      </div>
-
-      <div class="card form-card">
-
-        <div class="form-grid">
-
-          <!-- FORMULATION NAME -->
-          <div class="field">
-            <label for="fName">
-              Formulation name
-            </label>
-
-            <input
-              id="fName"
-              type="text"
-              placeholder="e.g. Ashwagandha botanical tablet"
-            />
-          </div>
-
-
-          <!-- DOSAGE FORM -->
-          <div class="field">
-            <label for="fDose">
-              Dosage form
-            </label>
-
-            <input
-              id="fDose"
-              type="text"
-              placeholder="Tablet / powder / syrup / cream"
-            />
-          </div>
-
-
-          <!-- INGREDIENTS -->
-          <div class="field full">
-
-            <label for="fIngredients">
-              Ingredients
-            </label>
-
-            <textarea
-              id="fIngredients"
-              placeholder="Type ingredient name (e.g. Ashwagandha, Tulsi, Neem)…"
-            ></textarea>
-
-            <div
-              id="ingredientSuggestions"
-              style="display:grid;gap:6px;margin-top:6px"
-            ></div>
-
-            <div
-              id="ingredientChips"
-              style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px"
-            ></div>
-
-          </div>
-
-
-          <!-- INTENDED USE -->
-          <div class="field">
-
-            <label for="fUse">
-              Intended use
-            </label>
-
-            <input
-              id="fUse"
-              type="text"
-              placeholder="Describe intended use"
-            />
-
-          </div>
-
-
-          <!-- NOVELTY -->
-          <div class="field">
-
-            <label for="fNovel">
-              Traditional or novel?
-            </label>
-
-            <select id="fNovel">
-              <option value="Traditional">
-                Traditional
-              </option>
-
-              <option value="Novel / modified">
-                Novel / modified
-              </option>
-
-              <option value="Unknown">
-                Unknown
-              </option>
-            </select>
-
-          </div>
-
-
-          <!-- JURISDICTION -->
-          <div class="field">
-
-            <label for="fJurisdiction">
-              Jurisdiction
-            </label>
-
-            <select id="fJurisdiction">
-              <option value="India">
-                India
-              </option>
-
-              <option value="International">
-                International
-              </option>
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <!-- CLASSIFY BUTTON -->
-        <button
-          class="btn"
-          id="fBtn"
-          type="button"
-        >
-          Classify Formulation →
-        </button>
-
-
-        <!-- RESULT -->
-        <div
-          class="result card"
-          id="fResult"
-        ></div>
-
-      </div>
-
-    </div>
-      <!-- =========================
-         INGREDIENT KNOWLEDGE LAYER
-         ========================= -->
-
-    <section
-      class="section"
-      style="padding:25px 0 0"
-    >
-
-      <div class="container">
-
-        <div class="card form-card">
-
-          <div class="kicker">
-            Prototype ingredient intelligence
-          </div>
-
-          <h2>
-            Ingredient knowledge layer
-          </h2>
+        <div class="card-header">
+          <h2>Enter Formulation Details</h2>
 
           <p class="muted">
-            Start typing an ingredient to see known aliases and
-            preliminary traditional-knowledge, IP, ABS and
-            regulatory flags.
-            This database is a prototype and must be verified
-            against current authoritative sources.
+            Provide the available formulation information for a
+            preliminary screening.
           </p>
+        </div>
+
+
+        <!-- FORMULATION NAME -->
+        <div class="form-group">
+          <label for="fName">
+            Formulation / Product Name
+          </label>
+
+          <input
+            id="fName"
+            type="text"
+            placeholder="e.g. Ashwagandha Herbal Capsules"
+          />
+        </div>
+
+
+        <!-- DOSAGE FORM -->
+        <div class="form-group">
+          <label for="fDose">
+            Dosage Form
+          </label>
+
+          <input
+            id="fDose"
+            type="text"
+            placeholder="e.g. Capsule, Tablet, Powder, Oil"
+          />
+        </div>
+
+
+        <!-- INGREDIENTS -->
+        <div class="form-group">
+          <label for="fIngredients">
+            Ingredients / Composition
+          </label>
+
+          <textarea
+            id="fIngredients"
+            rows="4"
+            placeholder="e.g. Ashwagandha, Piperine, Ginger"
+          ></textarea>
+
+          <div
+            id="ingredientSuggestions"
+            class="ingredient-suggestions"
+          ></div>
+
+          <div
+            id="ingredientChips"
+            class="ingredient-chips"
+          ></div>
+        </div>
+
+
+        <!-- INTENDED USE -->
+        <div class="form-group">
+          <label for="fUse">
+            Intended Use
+          </label>
+
+          <textarea
+            id="fUse"
+            rows="3"
+            placeholder="Describe the intended use or purpose of the formulation"
+          ></textarea>
+        </div>
+
+
+        <!-- NOVELTY -->
+        <div class="form-group">
+
+          <label for="fNovel">
+            What is novel about your formulation?
+          </label>
+
+          <textarea
+            id="fNovel"
+            rows="4"
+            placeholder="e.g. new ingredient ratio, extraction process, delivery method, combination, etc."
+          ></textarea>
+
+        </div>
+
+
+        <!-- JURISDICTION -->
+        <div class="form-group">
+
+          <label for="fJurisdiction">
+            Jurisdiction
+          </label>
+
+          <select id="fJurisdiction">
+
+            <option value="India">
+              India
+            </option>
+
+            <option value="International">
+              International
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- CHECK BUTTON -->
+        <div class="form-actions">
+
+          <button
+            id="fBtn"
+            class="btn btn-primary"
+            type="button"
+          >
+            Check Formulation
+          </button>
 
         </div>
 
       </div>
 
-    </section>
 
+      <!-- RESULT AREA -->
+      <div
+        id="fResult"
+        class="result-area"
+      ></div>
+      <!-- INGREDIENT KNOWLEDGE LAYER -->
+      <div class="card" style="margin-top:30px;">
+
+        <div class="card-header">
+          <h2>🌿 Ingredient Knowledge Layer</h2>
+
+          <p class="muted">
+            Explore known Ayurveda ingredients and their common forms.
+          </p>
+        </div>
+
+        <div id="ingredientKnowledge">
+
+          <div class="muted">
+            Loading ingredient knowledge...
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
   </main>
 
 
-  <!-- =========================
-       JAVASCRIPT
-       ========================= -->
-
+  <!-- COMMON JAVASCRIPT -->
   <script src="js/main.js"></script>
 
+  <!-- FORMULATION PAGE JAVASCRIPT -->
   <script>
-   <script>
-let ingredientCatalog = [];
-let selectedIngredients = [];
+    // ================================
+    // FORMULATION EXPLORER
+    // ================================
 
+    let ingredientCatalog = [];
+    let selectedIngredients = [];
 
-/* =========================
-   INGREDIENT CHIPS
-   ========================= */
 
-function renderIngredientChips() {
-  const wrap = document.getElementById("ingredientChips");
+    // ---------- SAFE HELPERS ----------
 
-  if (!wrap) return;
+    function safeArray(value) {
+      return Array.isArray(value) ? value : [];
+    }
 
-  wrap.innerHTML = selectedIngredients.map(x => `
-    <span class="pill">
-      ${escapeHtml(x)}
 
-      <button
-        type="button"
-        onclick="removeIngredient('${escapeHtml(x).replace(/'/g, "&#039;")}')"
-        style="border:0;background:transparent;color:inherit;font-weight:900;cursor:pointer"
-      >
-        ×
-      </button>
-    </span>
-  `).join("");
-}
+    function safeText(value, fallback = "") {
+      if (value === null || value === undefined) {
+        return fallback;
+      }
 
+      return String(value);
+    }
 
-function removeIngredient(name) {
 
-  selectedIngredients =
-    selectedIngredients.filter(x => x !== name);
+    function getIngredientName(item) {
+      if (typeof item === "string") {
+        return item;
+      }
 
-  const input = document.getElementById("fIngredients");
+      if (!item || typeof item !== "object") {
+        return "";
+      }
 
-  if (input) {
-    input.value = selectedIngredients.join(", ");
-  }
+      return (
+        item.name ||
+        item.ingredient ||
+        item.title ||
+        item.common_name ||
+        ""
+      );
+    }
 
-  renderIngredientChips();
-}
 
+    // ---------- LOAD INGREDIENT KNOWLEDGE ----------
 
-/* =========================
-   INGREDIENT SUGGESTIONS
-   ========================= */
+    async function loadIngredientKnowledge() {
 
-function showIngredientSuggestions(value) {
+      const container =
+        document.getElementById("ingredientKnowledge");
 
-  const box =
-    document.getElementById("ingredientSuggestions");
+      if (!container) return;
 
-  if (!box) return;
+      try {
 
-  const q = value.trim().toLowerCase();
+        const data = await apiGet("/ingredients");
 
-  if (!q) {
-    box.innerHTML = "";
-    return;
-  }
+        ingredientCatalog = safeArray(
+          data.ingredients || data
+        );
 
-  const matches = Array.isArray(ingredientCatalog)
-    ? ingredientCatalog.filter(x => {
+        if (!ingredientCatalog.length) {
 
-        const name = String(x.name || "");
+          container.innerHTML = `
+            <p class="muted">
+              No ingredient knowledge records available.
+            </p>
+          `;
 
-        const aliases = Array.isArray(x.aliases)
-          ? x.aliases.join(" ")
-          : String(x.aliases || "");
+          return;
+        }
 
-        return (name + " " + aliases)
-          .toLowerCase()
-          .includes(q);
 
-      }).slice(0, 6)
-    : [];
+        container.innerHTML = ingredientCatalog
+          .slice(0, 12)
+          .map(item => {
 
+            const name =
+              getIngredientName(item) || "Unknown ingredient";
 
-  box.innerHTML = matches.map(x => {
+            const description =
+              item.description ||
+              item.info ||
+              item.common_forms ||
+              "Knowledge record available.";
 
-    const name = String(x.name || "");
+            return `
+              <div class="source">
 
-    const aliases = Array.isArray(x.aliases)
-      ? x.aliases.join(", ")
-      : String(x.aliases || "");
+                <strong>
+                  ${escapeHtml(name)}
+                </strong>
 
-    return `
-      <button
-        type="button"
-        class="source"
-        style="
-          display:block;
-          width:100%;
-          text-align:left;
-          border:1px solid var(--border);
-          background:#fff;
-          cursor:pointer
-        "
-        onclick="pickIngredient('${escapeHtml(name).replace(/'/g, "&#039;")}')"
-      >
+                <div class="muted" style="margin-top:5px;">
+                  ${escapeHtml(description)}
+                </div>
 
-        <strong>${escapeHtml(name)}</strong>
+              </div>
+            `;
 
-        <span class="muted">
-          ${escapeHtml(aliases)}
-        </span>
+          })
+          .join("");
 
-      </button>
-    `;
+      } catch (error) {
 
-  }).join("");
-}
+        container.innerHTML = `
+          <p class="muted">
+            Ingredient knowledge could not be loaded.
+          </p>
+        `;
 
+        console.error(
+          "Ingredient knowledge error:",
+          error
+        );
+      }
+    }
 
-function pickIngredient(name) {
 
-  if (!selectedIngredients.includes(name)) {
-    selectedIngredients.push(name);
-  }
+    // ---------- INGREDIENT SUGGESTIONS ----------
 
-  const input = document.getElementById("fIngredients");
+    function showIngredientSuggestions(value) {
 
-  if (input) {
-    input.value = selectedIngredients.join(", ");
-  }
+      const box =
+        document.getElementById("ingredientSuggestions");
 
-  const suggestions =
-    document.getElementById("ingredientSuggestions");
+      if (!box) return;
 
-  if (suggestions) {
-    suggestions.innerHTML = "";
-  }
+      const query =
+        safeText(value).trim().toLowerCase();
 
-  renderIngredientChips();
-}
+      if (!query) {
 
+        box.innerHTML = "";
 
-/* =========================
-   PAGE INITIALIZATION
-   ========================= */
+        return;
+      }
 
-document.addEventListener("DOMContentLoaded", async () => {
 
-  /* Load ingredient database */
+      const matches = ingredientCatalog
+        .filter(item => {
 
-  try {
+          const name =
+            getIngredientName(item)
+              .toLowerCase();
 
-    const d = await apiGet("/ingredients");
+          return name.includes(query);
 
-    ingredientCatalog =
-      Array.isArray(d.items)
-        ? d.items
-        : [];
+        })
+        .slice(0, 8);
 
-  } catch (e) {
 
-    ingredientCatalog = [];
+      if (!matches.length) {
 
-  }
+        box.innerHTML = "";
 
+        return;
+      }
 
-  /* Ingredient input */
 
-  const ingredientInput =
-    document.getElementById("fIngredients");
+      box.innerHTML = matches
+        .map(item => {
 
-  if (ingredientInput) {
-
-    ingredientInput.addEventListener(
-      "input",
-      e => showIngredientSuggestions(e.target.value)
-    );
-
-  }
-
-
-  /* =========================
-     FORMULATION CHECK BUTTON
-     ========================= */
-
-  const button =
-    document.getElementById("fBtn");
-
-  if (!button) return;
-
-
-  button.onclick = async () => {
-
-    const result =
-      document.getElementById("fResult");
-
-    if (!result) return;
-
-
-    /* Loading */
-
-    result.classList.add("show");
-
-    result.innerHTML = `
-      <div class="loading">
-        <span class="dot"></span>
-
-        Matching ingredients and
-        classifying formulation…
-      </div>
-    `;
-
-
-    try {
-
-      /* =========================
-         SEND REQUEST
-         ========================= */
-
-      const d = await apiPost("/classify", {
-
-        name:
-          document.getElementById("fName")?.value || "",
-
-        dosage_form:
-          document.getElementById("fDose")?.value || "",
-
-        ingredients:
-          document.getElementById("fIngredients")?.value || "",
-
-        intended_use:
-          document.getElementById("fUse")?.value || "",
-
-        novelty:
-          document.getElementById("fNovel")?.value || "",
-
-        jurisdiction:
-          document.getElementById("fJurisdiction")?.value || "",
-
-        language:
-          currentLanguage()
-
-      });
-
-
-      /* =========================
-         SAFE ARRAY HANDLING
-         ========================= */
-
-      const matchedIngredients =
-        Array.isArray(d.matched_ingredients)
-          ? d.matched_ingredients
-          : [];
-
-
-      const nextSteps =
-        Array.isArray(d.next_steps)
-          ? d.next_steps
-          : (
-              Array.isArray(d.steps)
-                ? d.steps
-                : []
-            );
-
-
-      const sources =
-        Array.isArray(d.sources)
-          ? d.sources
-          : [];
-
-
-      /* =========================
-         INGREDIENT CARDS
-         ========================= */
-
-      const ingredientCards =
-        matchedIngredients.map(x => {
-
-          const aliases =
-            Array.isArray(x.aliases)
-              ? x.aliases.join(", ")
-              : String(x.aliases || "—");
-
-
-          const commonForms =
-            Array.isArray(x.common_forms)
-              ? x.common_forms.join(", ")
-              : String(x.common_forms || "—");
-
+          const name =
+            getIngredientName(item);
 
           return `
-            <div class="card">
+            <button
+              type="button"
+              class="ingredient-suggestion"
+              data-ingredient="${escapeHtml(name)}"
+            >
+              ${escapeHtml(name)}
+            </button>
+          `;
 
-              <div class="result-header">
+        })
+        .join("");
+
+
+      box
+        .querySelectorAll(
+          ".ingredient-suggestion"
+        )
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              addIngredient(
+                button.dataset.ingredient
+              );
+
+            }
+          );
+
+        });
+    }
+
+
+    // ---------- ADD INGREDIENT ----------
+
+    function addIngredient(name) {
+
+      name =
+        safeText(name).trim();
+
+      if (!name) return;
+
+
+      const exists =
+        selectedIngredients.some(
+          item =>
+            item.toLowerCase() ===
+            name.toLowerCase()
+        );
+
+
+      if (!exists) {
+
+        selectedIngredients.push(name);
+
+      }
+
+
+      renderIngredientChips();
+
+
+      const input =
+        document.getElementById("fIngredients");
+
+      if (input) {
+
+        const existing =
+          input.value
+            .split(",")
+            .map(x => x.trim())
+            .filter(Boolean);
+
+
+        const alreadyThere =
+          existing.some(
+            item =>
+              item.toLowerCase() ===
+              name.toLowerCase()
+          );
+
+
+        if (!alreadyThere) {
+
+          existing.push(name);
+
+        }
+
+
+        input.value =
+          existing.join(", ");
+
+      }
+
+
+      const suggestions =
+        document.getElementById(
+          "ingredientSuggestions"
+        );
+
+      if (suggestions) {
+
+        suggestions.innerHTML = "";
+
+      }
+    }
+
+
+    // ---------- REMOVE INGREDIENT ----------
+
+    function removeIngredient(name) {
+
+      selectedIngredients =
+        selectedIngredients.filter(
+          item =>
+            item.toLowerCase() !==
+            name.toLowerCase()
+        );
+
+
+      const input =
+        document.getElementById("fIngredients");
+
+      if (input) {
+
+        input.value =
+          selectedIngredients.join(", ");
+
+      }
+
+
+      renderIngredientChips();
+    }
+
+
+    // ---------- RENDER CHIPS ----------
+
+    function renderIngredientChips() {
+
+      const box =
+        document.getElementById(
+          "ingredientChips"
+        );
+
+      if (!box) return;
+
+
+      box.innerHTML =
+        selectedIngredients
+          .map(name => {
+
+            return `
+              <span class="ingredient-chip">
+
+                ${escapeHtml(name)}
+
+                <button
+                  type="button"
+                  data-remove="${escapeHtml(name)}"
+                  aria-label="Remove ingredient"
+                >
+                  ×
+                </button>
+
+              </span>
+            `;
+
+          })
+          .join("");
+
+
+      box
+        .querySelectorAll(
+          "[data-remove]"
+        )
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              removeIngredient(
+                button.dataset.remove
+              );
+
+            }
+          );
+
+        });
+    }
+
+
+    // ---------- FORMULATION CHECK ----------
+
+    async function checkFormulation() {
+
+      const result =
+        document.getElementById("fResult");
+
+      const button =
+        document.getElementById("fBtn");
+
+
+      if (!result) return;
+
+
+      const name =
+        document.getElementById("fName")?.value
+          .trim() || "";
+
+
+      const dosage =
+        document.getElementById("fDose")?.value
+          .trim() || "";
+
+
+      const ingredientsText =
+        document.getElementById(
+          "fIngredients"
+        )?.value.trim() || "";
+
+
+      const intendedUse =
+        document.getElementById("fUse")?.value
+          .trim() || "";
+
+
+      const novelty =
+        document.getElementById("fNovel")?.value
+          .trim() || "";
+
+
+      const jurisdiction =
+        document.getElementById(
+          "fJurisdiction"
+        )?.value || "India";
+
+
+      if (!name) {
+
+        result.innerHTML = `
+          <div class="notice">
+            Please enter the formulation name.
+          </div>
+        `;
+
+        result.classList.add("show");
+
+        return;
+      }
+
+
+      if (!ingredientsText) {
+
+        result.innerHTML = `
+          <div class="notice">
+            Please enter at least one ingredient.
+          </div>
+        `;
+
+        result.classList.add("show");
+
+        return;
+      }
+
+
+      if (button) {
+
+        button.disabled = true;
+
+        button.textContent =
+          isHindi()
+            ? "जाँच हो रही है..."
+            : "Checking...";
+
+      }
+
+
+      result.innerHTML = `
+        <div class="card">
+
+          <h3>
+            ${
+              isHindi()
+                ? "फॉर्मुलेशन की जाँच हो रही है..."
+                : "Checking formulation..."
+            }
+          </h3>
+
+          <p class="muted">
+            ${
+              isHindi()
+                ? "कृपया प्रतीक्षा करें।"
+                : "Please wait while the formulation is screened."
+            }
+          </p>
+
+        </div>
+      `;
+
+      result.classList.add("show");
+
+
+      try {
+
+        const payload = {
+
+          formulation_name:
+            name,
+
+          dosage_form:
+            dosage,
+
+          ingredients:
+            ingredientsText,
+
+          intended_use:
+            intendedUse,
+
+          novelty:
+            novelty,
+
+          jurisdiction:
+            jurisdiction,
+
+          language:
+            currentLanguage()
+
+        };
+
+
+        const data =
+          await apiPost(
+            "/classify",
+            payload
+          );
+
+
+        // ---------- SAFE RESPONSE ARRAYS ----------
+
+        const matchedIngredients =
+          safeArray(
+            data.matched_ingredients
+          );
+
+
+        const nextSteps =
+          safeArray(
+            data.next_steps
+          ).length
+              ? safeArray(data.next_steps)
+              : safeArray(data.steps);
+
+
+        const routes =
+          safeArray(
+            data.possible_ip_routes
+          ).length
+              ? safeArray(data.possible_ip_routes)
+              : safeArray(data.ip_routes);
+
+
+        const sources =
+          safeArray(
+            data.sources
+          );
+
+
+        // ---------- MATCHED INGREDIENTS ----------
+
+        const ingredientCards =
+          matchedIngredients
+            .map(item => {
+
+              const ingredient =
+                getIngredientName(item) ||
+                "Known ingredient";
+
+
+              const aliases =
+                safeArray(
+                  item.aliases
+                );
+
+
+              const forms =
+                safeArray(
+                  item.common_forms
+                );
+
+
+              return `
+                <div class="source">
+
+                  <strong>
+                    ${escapeHtml(ingredient)}
+                  </strong>
+
+                  ${
+                    aliases.length
+                      ? `
+                        <div class="muted">
+                          Aliases:
+                          ${escapeHtml(
+                            aliases.join(", ")
+                          )}
+                        </div>
+                      `
+                      : ""
+                  }
+
+                  ${
+                    forms.length
+                      ? `
+                        <div class="muted">
+                          Common forms:
+                          ${escapeHtml(
+                            forms.join(", ")
+                          )}
+                        </div>
+                      `
+                      : ""
+                  }
+
+                </div>
+              `;
+
+            })
+            .join("");
+
+
+        const ingredientSection =
+          ingredientCards
+            ? `
+              <div style="margin-top:22px">
 
                 <h3>
-                  🌿 ${escapeHtml(x.name || "Unknown ingredient")}
+                  ${
+                    isHindi()
+                      ? "पहचाने गए घटक"
+                      : "Detected Ingredients"
+                  }
                 </h3>
 
-                <span class="pill">
-                  Matched
-                </span>
+                ${ingredientCards}
+
+              </div>
+            `
+            : "";
+
+
+        // ---------- IP ROUTES ----------
+
+        const routeCards =
+          routes
+            .map(route => {
+
+              const text =
+                typeof route === "string"
+                  ? route
+                  : (
+                      route.name ||
+                      route.route ||
+                      route.type ||
+                      ""
+                    );
+
+
+              return text
+                ? `
+                  <li>
+                    ${escapeHtml(text)}
+                  </li>
+                `
+                : "";
+
+            })
+            .join("");
+
+
+        const routeSection =
+          routeCards
+            ? `
+              <div style="margin-top:22px">
+
+                <h3>
+                  ${
+                    isHindi()
+                      ? "संभावित IP मार्ग"
+                      : "Possible IP Routes"
+                  }
+                </h3>
+
+                <ul>
+                  ${routeCards}
+                </ul>
+
+              </div>
+            `
+            : "";
+
+
+        // ---------- NEXT STEPS ----------
+
+        const stepCards =
+          nextSteps
+            .map(step => {
+
+              const text =
+                typeof step === "string"
+                  ? step
+                  : (
+                      step.text ||
+                      step.description ||
+                      step.step ||
+                      ""
+                    );
+
+
+              return text
+                ? `
+                  <li>
+                    ${escapeHtml(text)}
+                  </li>
+                `
+                : "";
+
+            })
+            .join("");
+
+
+        const stepsSection =
+          stepCards
+            ? `
+              <div style="margin-top:22px">
+
+                <h3>
+                  ${
+                    isHindi()
+                      ? "सुझाव / अगले कदम"
+                      : "Recommendations / Next Steps"
+                  }
+                </h3>
+
+                <ol>
+                  ${stepCards}
+                </ol>
+
+              </div>
+            `
+            : "";
+
+
+        // ---------- MAIN RESULT ----------
+
+        const indicator =
+          data.preliminary_indicator ||
+          data.indicator ||
+          data.result ||
+          "Preliminary screening completed.";
+
+
+        const attention =
+          data.attention_level ||
+          data.attention ||
+          "Not specified";
+
+
+        const summary =
+          data.summary ||
+          data.message ||
+          data.explanation ||
+          "";
+
+
+        const warning =
+          data.warning ||
+          data.disclaimer ||
+          "";
+
+
+        result.innerHTML = `
+
+          <div class="card">
+
+            <h2>
+              ${
+                isHindi()
+                  ? "फॉर्मुलेशन स्क्रीनिंग परिणाम"
+                  : "Formulation Screening Result"
+              }
+            </h2>
+
+
+            <div class="result-grid">
+
+              <div class="result-box">
+
+                <strong>
+                  ${
+                    isHindi()
+                      ? "प्रारंभिक संकेतक"
+                      : "Preliminary Indicator"
+                  }
+                </strong>
+
+                <p>
+                  ${escapeHtml(indicator)}
+                </p>
 
               </div>
 
 
-              <p class="muted">
+              <div class="result-box">
 
-                <b>Also known as:</b>
-                ${escapeHtml(aliases)}
+                <strong>
+                  ${
+                    isHindi()
+                      ? "ध्यान स्तर"
+                      : "Attention Level"
+                  }
+                </strong>
 
-              </p>
+                <p>
+                  ${escapeHtml(attention)}
+                </p>
 
-
-              <p class="muted">
-
-                <b>Part used:</b>
-                ${escapeHtml(x.part_used || "—")}
-
-                ·
-
-                <b>Common forms:</b>
-                ${escapeHtml(commonForms)}
-
-              </p>
-
-
-              <p>
-
-                <b>Traditional context:</b>
-                ${escapeHtml(x.traditional_context || "—")}
-
-              </p>
-
-
-              <p>
-
-                <b>IP:</b>
-                ${escapeHtml(x.ip_flag || "—")}
-
-              </p>
-
-
-              <p>
-
-                <b>ABS:</b>
-                ${escapeHtml(x.abs_flag || "—")}
-
-              </p>
-
-
-              <p>
-
-                <b>Regulatory:</b>
-                ${escapeHtml(x.regulatory_flag || "—")}
-
-              </p>
+              </div>
 
             </div>
-          `;
-
-        }).join("");
 
 
-      /* =========================
-         DETECTED INGREDIENT SECTION
-         ========================= */
+            ${
+              summary
+                ? `
+                  <div style="margin-top:20px">
 
-      const ingredientSection =
-        ingredientCards
-          ? `
-            <h3 style="margin-top:22px">
-              Detected ingredients
-            </h3>
+                    <h3>
+                      ${
+                        isHindi()
+                          ? "विश्लेषण"
+                          : "Analysis"
+                      }
+                    </h3>
 
-            <div class="grid grid-2">
-              ${ingredientCards}
-            </div>
-          `
-          : `
-            <div
-              class="notice"
-              style="margin-top:20px"
-            >
-              No known ingredient was confidently
-              matched in the prototype database.
-              You can still enter the ingredient manually
-              and verify it against authoritative sources.
-            </div>
-          `;
+                    <p>
+                      ${escapeHtml(summary)}
+                    </p>
+
+                  </div>
+                `
+                : ""
+            }
 
 
-      /* =========================
-         NEXT STEPS
-         ========================= */
+            ${ingredientSection}
 
-      const nextStepsHtml =
-        nextSteps.length
-          ? `
-            <h3 style="margin-top:22px">
-              Next steps
-            </h3>
+            ${routeSection}
 
-            <ol>
+            ${stepsSection}
+
+
+            ${
+              warning
+                ? `
+                  <div
+                    class="notice"
+                    style="margin-top:22px"
+                  >
+                    <strong>
+                      ${
+                        isHindi()
+                          ? "महत्वपूर्ण सूचना"
+                          : "Important Notice"
+                      }
+                    </strong>
+
+                    <p>
+                      ${escapeHtml(warning)}
+                    </p>
+
+                  </div>
+                `
+                : ""
+            }
+
+
+            ${sourcesHtml(sources)}
+
+          </div>
+
+        `;
+
+
+        result.classList.add("show");
+
+        translateDynamicContent();
+
+
+      } catch (error) {
+
+        console.error(
+          "Formulation check error:",
+          error
+        );
+
+
+        result.innerHTML = `
+
+          <div class="notice">
+
+            <strong>
               ${
-                nextSteps.map(x =>
-                  `<li>${escapeHtml(x)}</li>`
-                ).join("")
+                isHindi()
+                  ? "जाँच विफल"
+                  : "Check failed"
               }
-            </ol>
-          `
-          : "";
+            </strong>
 
-
-      /* =========================
-         FINAL RESULT
-         ========================= */
-
-      result.innerHTML = `
-
-        <div class="result-header">
-
-          <h2>
-            ${escapeHtml(
-              d.category || "Preliminary formulation assessment"
-            )}
-          </h2>
-
-          <span class="pill">
-            ${escapeHtml(
-              d.confidence || "Preliminary"
-            )}
-            confidence
-          </span>
-
-        </div>
-
-
-        <p>
-          ${escapeHtml(
-            d.explanation ||
-            "This is a preliminary, source-grounded assessment."
-          )}
-        </p>
-
-
-        ${ingredientSection}
-
-
-        <div
-          class="grid grid-3"
-          style="margin-top:20px"
-        >
-
-          <div class="card">
-
-            <h3>
-              Regulatory
-            </h3>
-
-            <p class="muted">
+            <p>
               ${escapeHtml(
-                d.regulatory || "Not specified"
+                error.message ||
+                "Unable to process formulation."
               )}
             </p>
 
           </div>
 
+        `;
 
-          <div class="card">
+        result.classList.add("show");
 
-            <h3>
-              IP posture
-            </h3>
+      } finally {
 
-            <p class="muted">
-              ${escapeHtml(
-                d.ip || "Not specified"
-              )}
-            </p>
+        if (button) {
 
-          </div>
+          button.disabled = false;
 
+          button.textContent =
+            isHindi()
+              ? "फॉर्मुलेशन जाँचें"
+              : "Check Formulation";
 
-          <div class="card">
+        }
 
-            <h3>
-              ABS / TK
-            </h3>
-
-            <p class="muted">
-              ${escapeHtml(
-                d.abs || "Not specified"
-              )}
-            </p>
-
-          </div>
-
-        </div>
-
-
-        ${nextStepsHtml}
-
-
-        ${sourcesHtml(sources)}
-
-      `;
-
-
-      translateDynamicContent();
-
-
-    } catch (e) {
-
-      result.innerHTML = `
-        <div class="notice">
-          ${escapeHtml(
-            e.message || "Something went wrong."
-          )}
-        </div>
-      `;
-
+      }
     }
 
-  };
 
-});
-</script>
+    // ---------- EVENT LISTENERS ----------
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        const input =
+          document.getElementById(
+            "fIngredients"
+          );
+
+
+        if (input) {
+
+          input.addEventListener(
+            "input",
+            () => {
+
+              showIngredientSuggestions(
+                input.value
+              );
+
+            }
+          );
+
+        }
+
+
+        const button =
+          document.getElementById("fBtn");
+
+
+        if (button) {
+
+          button.addEventListener(
+            "click",
+            checkFormulation
+          );
+
+        }
+
+
+        loadIngredientKnowledge();
+
+      }
+    );
+
+  </script>
 
 </body>
 </html>
-
-    </div>
