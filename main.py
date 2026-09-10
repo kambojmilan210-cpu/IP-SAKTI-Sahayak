@@ -44,6 +44,7 @@ app.add_middleware(
 # =========================================================
 
 def load_json(name):
+
     file_path = DATA / name
 
     with open(
@@ -68,12 +69,14 @@ INGREDIENTS = load_json("ingredients.json")
 # =========================================================
 
 class AskRequest(BaseModel):
+
     question: str = ""
     jurisdiction: str = "India"
     language: str = "English"
 
 
 class IPRequest(BaseModel):
+
     name: str = ""
     description: str = ""
     novelty: str = ""
@@ -84,6 +87,7 @@ class IPRequest(BaseModel):
 
 
 class FormulationRequest(BaseModel):
+
     name: str = ""
     formulation_name: str = ""
     dosage_form: str = ""
@@ -95,6 +99,7 @@ class FormulationRequest(BaseModel):
 
 
 class RegulatoryRequest(BaseModel):
+
     category: str = ""
     jurisdiction: str = "India"
     description: str = ""
@@ -106,7 +111,10 @@ class RegulatoryRequest(BaseModel):
 # =========================================================
 
 def is_hindi(language: str) -> bool:
-    value = str(language or "").lower()
+
+    value = str(
+        language or ""
+    ).lower()
 
     return (
         "hindi" in value
@@ -120,6 +128,7 @@ def is_hindi(language: str) -> bool:
 # =========================================================
 
 def source_record(item):
+
     return {
         "title": (
             item.get("source")
@@ -156,6 +165,7 @@ def source_record(item):
 
 
 def source_text(item):
+
     return (
         str(item.get("title", "")) + " " +
         str(item.get("source", "")) + " " +
@@ -284,6 +294,7 @@ def retrieve(
             str(jurisdiction or "").lower()
             in text
         ):
+
             score += 2
 
 
@@ -500,7 +511,6 @@ def ask(req: AskRequest):
 
     elif (
         "traditional knowledge" in lower
-        or "traditional knowledge" in lower
         or "biological resource" in lower
         or "biological" in lower
         or "abs" in lower
@@ -654,15 +664,20 @@ def ask(req: AskRequest):
             "regulatory approval, certification or a final determination."
         )
     }
-    # =========================================================
+
+
+# =========================================================
 # INGREDIENT MATCHING
 # =========================================================
 
 def match_ingredients(raw_text: str):
 
-    text = str(raw_text or "").lower()
+    text = str(
+        raw_text or ""
+    ).lower()
 
     matches = []
+
 
     for item in INGREDIENTS:
 
@@ -671,7 +686,6 @@ def match_ingredients(raw_text: str):
             []
         )
 
-        # Name ko bhi matching mein include karo
         name = str(
             item.get("name", "")
         )
@@ -689,6 +703,7 @@ def match_ingredients(raw_text: str):
 
         found = False
 
+
         for keyword in search_terms:
 
             keyword = str(
@@ -700,8 +715,11 @@ def match_ingredients(raw_text: str):
                 found = True
                 break
 
+
         if found:
+
             matches.append(item)
+
 
     return matches
 
@@ -1098,9 +1116,6 @@ def get_ip_routes(
     routes = []
 
 
-    # Patent is relevant when there may be
-    # a novel formulation/process.
-
     if (
         str(novelty or "").strip()
         and str(novelty).lower()
@@ -1129,8 +1144,6 @@ def get_ip_routes(
         )
 
 
-    # Trademark can protect the brand identifier.
-
     routes.append(
         "ट्रेडमार्क"
         if hindi
@@ -1138,8 +1151,6 @@ def get_ip_routes(
         "Trademark"
     )
 
-
-    # Confidential formulation/process information.
 
     routes.append(
         "ट्रेड सीक्रेट"
@@ -1149,9 +1160,6 @@ def get_ip_routes(
     )
 
 
-    # Design may apply to eligible visual appearance,
-    # packaging or product configuration.
-
     routes.append(
         "डिज़ाइन"
         if hindi
@@ -1160,9 +1168,8 @@ def get_ip_routes(
     )
 
 
-    # Remove duplicates while preserving order.
-
     unique_routes = []
+
 
     for route in routes:
 
@@ -1189,8 +1196,6 @@ def get_preliminary_indicator(
         novelty or ""
     ).strip().lower()
 
-
-    # Known ingredients detected
 
     if matched:
 
@@ -1231,8 +1236,6 @@ def get_preliminary_indicator(
         return indicator
 
 
-    # No known ingredient match
-
     return (
         "Prototype database में कोई known ingredient match "
         "नहीं मिला; यह novelty का proof नहीं है और prior-art "
@@ -1259,9 +1262,6 @@ def get_attention_level(
         novelty or ""
     ).lower()
 
-
-    # Multiple known ingredients + novelty claim
-    # = higher review attention.
 
     if (
         len(matched) >= 2
@@ -1356,7 +1356,9 @@ def get_formulation_explanation(
 
 
     return explanation
-    # =========================================================
+
+
+# =========================================================
 # FORMULATION CLASSIFIER
 # =========================================================
 
@@ -1586,6 +1588,7 @@ def classify(req: FormulationRequest):
     # Remove duplicate warnings
 
     unique_warnings = []
+
 
     for warning in warnings:
 
@@ -1965,7 +1968,9 @@ def ip_check(req: IPRequest):
         "disclaimer":
             disclaimer
     }
-    # =========================================================
+
+
+# =========================================================
 # REGULATORY NAVIGATOR
 # =========================================================
 
@@ -2231,6 +2236,21 @@ def regulatory(req: RegulatoryRequest):
 
         "disclaimer":
             disclaimer
+    }
+
+
+# =========================================================
+# SOURCES ENDPOINT
+# =========================================================
+
+@app.get("/sources")
+def sources():
+
+    return {
+        "sources": [
+            source_record(item)
+            for item in SOURCES
+        ]
     }
 
 
