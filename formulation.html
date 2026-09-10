@@ -1,241 +1,1048 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+
+<head>
+  <meta charset="utf-8">
+  <meta
+    content="width=device-width,initial-scale=1"
+    name="viewport"
+  >
+
   <title>
-   Formulation Explorer | IP-SAKTI Sahayak
+    Formulation Explorer | IP-SAKTI Sahayak
   </title>
-  <meta content="IP-SAKTI Sahayak — source-grounded AI guidance for Ayurveda IP and regulatory pathways." name="description"/>
-  <link href="css/style.css" rel="stylesheet"/>
- </head>
- <body>
+
+  <meta
+    content="IP-SAKTI Sahayak — source-grounded AI guidance for Ayurveda IP and regulatory pathways."
+    name="description"
+  >
+
+  <link
+    href="css/style.css"
+    rel="stylesheet"
+  >
+</head>
+
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+       ========================= -->
+
   <header class="navbar">
-   <div class="container nav-inner">
-    <a class="brand" href="index.html">
-     <span class="brand-mark">
-      S
-     </span>
-     <span>
-      IP-SAKTI Sahayak
-     </span>
-    </a>
-    <button class="mobile-toggle">
-     ☰
-    </button>
-    <nav class="nav-links">
-     <a class="" href="index.html">
-      Home
-     </a>
-     <a class="" href="ask-sahayak.html">
-      Ask Sahayak
-     </a>
-     <a class="" href="ip-checker.html">
-      IP Checker
-     </a>
-     <a class="active" href="formulation.html">
-      Formulation
-     </a>
-     <a class="" href="patent-explorer.html">
-      Patent Explorer
-     </a>
-     <a class="" href="regulatory-navigator.html">
-      Regulatory
-     </a>
-     <a class="" href="regulatory-journey.html">
-      Journey
-     </a>
-     <a class="" href="comparison.html">
-      Compare
-     </a>
-     <a class="" href="knowledge-explorer.html">
-      Knowledge
-     </a>
-     <a class="" href="evidence.html">
-      Evidence
-     </a>
-    </nav>
-    <select aria-label="Language" class="lang-select" id="language">
-     <option>
-      English
-     </option>
-     <option>
-      हिन्दी
-     </option>
-    </select>
-   </div>
+
+    <div class="container nav-inner">
+
+      <a
+        class="brand"
+        href="index.html"
+      >
+        <span class="brand-mark">
+          S
+        </span>
+
+        <span>
+          IP-SAKTI Sahayak
+        </span>
+      </a>
+
+
+      <button
+        class="mobile-toggle"
+        type="button"
+      >
+        ☰
+      </button>
+
+
+      <nav class="nav-links">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="ask-sahayak.html">
+          Ask Sahayak
+        </a>
+
+        <a href="ip-checker.html">
+          IP Checker
+        </a>
+
+        <a
+          class="active"
+          href="formulation.html"
+        >
+          Formulation
+        </a>
+
+        <a href="patent-explorer.html">
+          Patent Explorer
+        </a>
+
+        <a href="regulatory-navigator.html">
+          Regulatory
+        </a>
+
+        <a href="regulatory-journey.html">
+          Journey
+        </a>
+
+        <a href="comparison.html">
+          Compare
+        </a>
+
+        <a href="knowledge-explorer.html">
+          Knowledge
+        </a>
+
+        <a href="evidence.html">
+          Evidence
+        </a>
+
+      </nav>
+
+
+      <select
+        aria-label="Language"
+        class="lang-select"
+        id="language"
+      >
+        <option value="English">
+          English
+        </option>
+
+        <option value="Hindi">
+          हिन्दी
+        </option>
+      </select>
+
+    </div>
+
   </header>
+
+
+  <!-- =========================
+       MAIN CONTENT
+       ========================= -->
+
   <main class="section">
-   <div class="container">
-    <div class="section-head">
-     <div>
-      <div class="kicker">
-       Product classification
-      </div>
-      <h1 style="font-size:44px">
-       Ayurveda Formulation Explorer
-      </h1>
-      <p>
-       Classify a product/formulation and connect it to preliminary IP, regulatory and ABS considerations.
-      </p>
-     </div>
-    </div>
-    <div class="card form-card">
-     <div class="form-grid">
-      <div class="field">
-       <label>
-        Formulation name
-       </label>
-       <input id="fName" placeholder="e.g. Ashwagandha botanical tablet"/>
-      </div>
-      <div class="field">
-       <label>
-        Dosage form
-       </label>
-       <input id="fDose" placeholder="Tablet / powder / syrup / cream"/>
-      </div>
-      <div class="field full">
-       <label>
-        Ingredients
-       </label>
-       <textarea id="fIngredients" placeholder="Type ingredient name (e.g. Ashwagandha, Tulsi, Neem)…"></textarea>
-       <div id="ingredientSuggestions" style="display:grid;gap:6px;margin-top:6px">
-       </div>
-       <div id="ingredientChips" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px">
-       </div>
-      </div>
-      <div class="field">
-       <label>
-        Intended use
-       </label>
-       <input id="fUse" placeholder="Describe intended use"/>
-      </div>
-      <div class="field">
-       <label>
-        Traditional or novel?
-       </label>
-       <select id="fNovel">
-        <option>
-         Traditional
-        </option>
-        <option>
-         Novel / modified
-        </option>
-        <option>
-         Unknown
-        </option>
-       </select>
-      </div>
-      <div class="field">
-       <label>
-        Jurisdiction
-       </label>
-       <select id="fJurisdiction">
-        <option>
-         India
-        </option>
-        <option>
-         International
-        </option>
-       </select>
-      </div>
-     </div>
-     <button class="btn" id="fBtn">
-      Classify Formulation →
-     </button>
-     <div class="result card" id="fResult">
-     </div>
-    </div>
-   </div>
-   <section class="section" style="padding:25px 0 0">
+
     <div class="container">
-     <div class="card form-card">
-      <div class="kicker">
-       Prototype ingredient intelligence
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="kicker">
+            Product classification
+          </div>
+
+          <h1 style="font-size:44px">
+            Ayurveda Formulation Explorer
+          </h1>
+
+          <p>
+            Classify a product/formulation and connect it
+            to preliminary IP, regulatory and ABS considerations.
+          </p>
+
+        </div>
+
       </div>
-      <h2>
-       Ingredient knowledge layer
-      </h2>
-      <p class="muted">
-       Start typing an ingredient to see known aliases and preliminary traditional-knowledge, IP, ABS and regulatory flags. This database is a prototype and must be verified against current authoritative sources.
-      </p>
-     </div>
+
+
+      <!-- =========================
+           FORMULATION FORM
+           ========================= -->
+
+      <div class="card form-card">
+
+        <div class="form-grid">
+
+
+          <!-- FORMULATION NAME -->
+
+          <div class="field">
+
+            <label>
+              Formulation name
+            </label>
+
+            <input
+              id="fName"
+              type="text"
+              placeholder="e.g. Ashwagandha botanical tablet"
+            >
+
+          </div>
+
+
+          <!-- DOSAGE FORM -->
+
+          <div class="field">
+
+            <label>
+              Dosage form
+            </label>
+
+            <input
+              id="fDose"
+              type="text"
+              placeholder="Tablet / powder / syrup / cream"
+            >
+
+          </div>
+
+
+          <!-- INGREDIENTS -->
+
+          <div class="field full">
+
+            <label>
+              Ingredients
+            </label>
+
+            <textarea
+              id="fIngredients"
+              placeholder="Type ingredient name (e.g. Ashwagandha, Tulsi, Neem)…"
+            ></textarea>
+
+
+            <div
+              id="ingredientSuggestions"
+              style="display:grid;gap:6px;margin-top:6px"
+            >
+            </div>
+
+
+            <div
+              id="ingredientChips"
+              style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px"
+            >
+            </div>
+
+          </div>
+
+
+          <!-- INTENDED USE -->
+
+          <div class="field">
+
+            <label>
+              Intended use
+            </label>
+
+            <input
+              id="fUse"
+              type="text"
+              placeholder="Describe intended use"
+            >
+
+          </div>
+
+
+          <!-- NOVELTY -->
+
+          <div class="field">
+
+            <label>
+              Traditional or novel?
+            </label>
+
+            <select id="fNovel">
+
+              <option value="Traditional">
+                Traditional
+              </option>
+
+              <option value="Novel / modified">
+                Novel / modified
+              </option>
+
+              <option value="Unknown">
+                Unknown
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- JURISDICTION -->
+
+          <div class="field">
+
+            <label>
+              Jurisdiction
+            </label>
+
+            <select id="fJurisdiction">
+
+              <option value="India">
+                India
+              </option>
+
+              <option value="International">
+                International
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <!-- CLASSIFY BUTTON -->
+
+        <button
+          class="btn"
+          id="fBtn"
+          type="button"
+        >
+          Classify Formulation →
+        </button>
+
+
+        <!-- RESULT CONTAINER -->
+
+        <div
+          class="result card"
+          id="fResult"
+        >
+        </div>
+
+      </div>
+     <main class="section">
+    <div class="container">
+
+      <div class="section-head">
+        <div>
+          <div class="kicker">Product classification</div>
+
+          <h1 style="font-size:44px">
+            Ayurveda Formulation Explorer
+          </h1>
+
+          <p>
+            Classify a product/formulation and connect it to preliminary
+            IP, regulatory and ABS considerations.
+          </p>
+        </div>
+      </div>
+
+      <div class="card form-card">
+
+        <div class="form-grid">
+
+          <!-- FORMULATION NAME -->
+          <div class="field">
+            <label for="fName">
+              Formulation name
+            </label>
+
+            <input
+              id="fName"
+              type="text"
+              placeholder="e.g. Ashwagandha botanical tablet"
+            />
+          </div>
+
+
+          <!-- DOSAGE FORM -->
+          <div class="field">
+            <label for="fDose">
+              Dosage form
+            </label>
+
+            <input
+              id="fDose"
+              type="text"
+              placeholder="Tablet / powder / syrup / cream"
+            />
+          </div>
+
+
+          <!-- INGREDIENTS -->
+          <div class="field full">
+
+            <label for="fIngredients">
+              Ingredients
+            </label>
+
+            <textarea
+              id="fIngredients"
+              placeholder="Type ingredient name (e.g. Ashwagandha, Tulsi, Neem)…"
+            ></textarea>
+
+            <div
+              id="ingredientSuggestions"
+              style="display:grid;gap:6px;margin-top:6px"
+            ></div>
+
+            <div
+              id="ingredientChips"
+              style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px"
+            ></div>
+
+          </div>
+
+
+          <!-- INTENDED USE -->
+          <div class="field">
+
+            <label for="fUse">
+              Intended use
+            </label>
+
+            <input
+              id="fUse"
+              type="text"
+              placeholder="Describe intended use"
+            />
+
+          </div>
+
+
+          <!-- NOVELTY -->
+          <div class="field">
+
+            <label for="fNovel">
+              Traditional or novel?
+            </label>
+
+            <select id="fNovel">
+              <option value="Traditional">
+                Traditional
+              </option>
+
+              <option value="Novel / modified">
+                Novel / modified
+              </option>
+
+              <option value="Unknown">
+                Unknown
+              </option>
+            </select>
+
+          </div>
+
+
+          <!-- JURISDICTION -->
+          <div class="field">
+
+            <label for="fJurisdiction">
+              Jurisdiction
+            </label>
+
+            <select id="fJurisdiction">
+              <option value="India">
+                India
+              </option>
+
+              <option value="International">
+                International
+              </option>
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <!-- CLASSIFY BUTTON -->
+        <button
+          class="btn"
+          id="fBtn"
+          type="button"
+        >
+          Classify Formulation →
+        </button>
+
+
+        <!-- RESULT -->
+        <div
+          class="result card"
+          id="fResult"
+        ></div>
+
+      </div>
+
     </div>
-   </section>
+      <!-- =========================
+         INGREDIENT KNOWLEDGE LAYER
+         ========================= -->
+
+    <section
+      class="section"
+      style="padding:25px 0 0"
+    >
+
+      <div class="container">
+
+        <div class="card form-card">
+
+          <div class="kicker">
+            Prototype ingredient intelligence
+          </div>
+
+          <h2>
+            Ingredient knowledge layer
+          </h2>
+
+          <p class="muted">
+            Start typing an ingredient to see known aliases and
+            preliminary traditional-knowledge, IP, ABS and
+            regulatory flags.
+            This database is a prototype and must be verified
+            against current authoritative sources.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
-  <!-- Shared API helpers: apiGet, apiPost, escapeHtml and source rendering -->
+
+
+  <!-- =========================
+       JAVASCRIPT
+       ========================= -->
+
   <script src="js/main.js"></script>
+
   <script>
-   let ingredientCatalog=[];
-let selectedIngredients=[];
+   <script>
+let ingredientCatalog = [];
+let selectedIngredients = [];
 
-function renderIngredientChips(){
- const wrap=document.getElementById("ingredientChips");
- wrap.innerHTML=selectedIngredients.map(x=>`<span class="pill">${escapeHtml(x)} <button type="button" onclick="removeIngredient('${escapeHtml(x).replace(/'/g,"&#039;")}')" style="border:0;background:transparent;color:inherit;font-weight:900">×</button></span>`).join("");
-}
-function removeIngredient(name){
- selectedIngredients=selectedIngredients.filter(x=>x!==name);
- document.getElementById("fIngredients").value=selectedIngredients.join(", ");
- renderIngredientChips();
-}
-function showIngredientSuggestions(value){
- const box=document.getElementById("ingredientSuggestions");
- const q=value.trim().toLowerCase();
- if(!q){box.innerHTML="";return;}
- const matches=ingredientCatalog.filter(x=>
-   (x.name+" "+x.aliases.join(" ")).toLowerCase().includes(q)
- ).slice(0,6);
- box.innerHTML=matches.map(x=>`<button type="button" class="source" style="display:block;width:100%;text-align:left;border:1px solid var(--border);background:#fff;cursor:pointer" onclick="pickIngredient('${escapeHtml(x.name).replace(/'/g,"&#039;")}')"><strong>${escapeHtml(x.name)}</strong><span class="muted">${escapeHtml(x.aliases.join(", "))}</span></button>`).join("");
-}
-function pickIngredient(name){
- if(!selectedIngredients.includes(name)) selectedIngredients.push(name);
- document.getElementById("fIngredients").value=selectedIngredients.join(", ");
- document.getElementById("ingredientSuggestions").innerHTML="";
- renderIngredientChips();
-}
-document.addEventListener("DOMContentLoaded",async()=>{
- try{
-   const d=await apiGet("/ingredients"); ingredientCatalog=d.items||[];
- }catch(e){}
- document.getElementById("fIngredients").addEventListener("input",e=>showIngredientSuggestions(e.target.value));
 
- document.getElementById("fBtn").onclick=async()=>{
-  const result=document.getElementById("fResult");
-  result.classList.add("show");result.innerHTML='<div class="loading"><span class="dot"></span> Matching ingredients and classifying formulation…</div>';
-  try{
-   const d=await apiPost("/classify",{
-    name:document.getElementById("fName").value,
-    dosage_form:document.getElementById("fDose").value,
-    ingredients:document.getElementById("fIngredients").value,
-    intended_use:document.getElementById("fUse").value,
-    novelty:document.getElementById("fNovel").value,
-    jurisdiction:document.getElementById("fJurisdiction").value
-   });
-   const ingredientCards=(d.matched_ingredients||[]).map(x=>`
-    <div class="card">
-      <div class="result-header"><h3>🌿 ${escapeHtml(x.name)}</h3><span class="pill">Matched</span></div>
-      <p class="muted"><b>Also known as:</b> ${escapeHtml(x.aliases.join(", "))}</p>
-      <p class="muted"><b>Part used:</b> ${escapeHtml(x.part_used)} · <b>Common forms:</b> ${escapeHtml(x.common_forms.join(", "))}</p>
-      <p><b>Traditional context:</b> ${escapeHtml(x.traditional_context)}</p>
-      <p><b>IP:</b> ${escapeHtml(x.ip_flag)}</p>
-      <p><b>ABS:</b> ${escapeHtml(x.abs_flag)}</p>
-      <p><b>Regulatory:</b> ${escapeHtml(x.regulatory_flag)}</p>
-    </div>`).join("");
+/* =========================
+   INGREDIENT CHIPS
+   ========================= */
 
-   result.innerHTML=`<div class="result-header"><h2>${escapeHtml(d.category)}</h2><span class="pill">${escapeHtml(d.confidence)} confidence</span></div>
-   <p>${escapeHtml(d.explanation)}</p>
-   ${ingredientCards?`<h3 style="margin-top:22px">Detected ingredients</h3><div class="grid grid-2">${ingredientCards}</div>`:"<div class='notice' style='margin-top:20px'>No known ingredient was confidently matched in the prototype database. You can still enter the ingredient manually and verify it against authoritative sources.</div>"}
-   <div class="grid grid-3" style="margin-top:20px">
-     <div class="card"><h3>Regulatory</h3><p class="muted">${escapeHtml(d.regulatory)}</p></div>
-     <div class="card"><h3>IP posture</h3><p class="muted">${escapeHtml(d.ip)}</p></div>
-     <div class="card"><h3>ABS / TK</h3><p class="muted">${escapeHtml(d.abs)}</p></div>
-   </div>
-   <h3 style="margin-top:22px">Next steps</h3><ol>${d.next_steps.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ol>
-   ${sourcesHtml(d.sources)}`;
-  }catch(e){result.innerHTML='<div class="notice">'+escapeHtml(e.message)+'</div>';}
- };
+function renderIngredientChips() {
+  const wrap = document.getElementById("ingredientChips");
+
+  if (!wrap) return;
+
+  wrap.innerHTML = selectedIngredients.map(x => `
+    <span class="pill">
+      ${escapeHtml(x)}
+
+      <button
+        type="button"
+        onclick="removeIngredient('${escapeHtml(x).replace(/'/g, "&#039;")}')"
+        style="border:0;background:transparent;color:inherit;font-weight:900;cursor:pointer"
+      >
+        ×
+      </button>
+    </span>
+  `).join("");
+}
+
+
+function removeIngredient(name) {
+
+  selectedIngredients =
+    selectedIngredients.filter(x => x !== name);
+
+  const input = document.getElementById("fIngredients");
+
+  if (input) {
+    input.value = selectedIngredients.join(", ");
+  }
+
+  renderIngredientChips();
+}
+
+
+/* =========================
+   INGREDIENT SUGGESTIONS
+   ========================= */
+
+function showIngredientSuggestions(value) {
+
+  const box =
+    document.getElementById("ingredientSuggestions");
+
+  if (!box) return;
+
+  const q = value.trim().toLowerCase();
+
+  if (!q) {
+    box.innerHTML = "";
+    return;
+  }
+
+  const matches = Array.isArray(ingredientCatalog)
+    ? ingredientCatalog.filter(x => {
+
+        const name = String(x.name || "");
+
+        const aliases = Array.isArray(x.aliases)
+          ? x.aliases.join(" ")
+          : String(x.aliases || "");
+
+        return (name + " " + aliases)
+          .toLowerCase()
+          .includes(q);
+
+      }).slice(0, 6)
+    : [];
+
+
+  box.innerHTML = matches.map(x => {
+
+    const name = String(x.name || "");
+
+    const aliases = Array.isArray(x.aliases)
+      ? x.aliases.join(", ")
+      : String(x.aliases || "");
+
+    return `
+      <button
+        type="button"
+        class="source"
+        style="
+          display:block;
+          width:100%;
+          text-align:left;
+          border:1px solid var(--border);
+          background:#fff;
+          cursor:pointer
+        "
+        onclick="pickIngredient('${escapeHtml(name).replace(/'/g, "&#039;")}')"
+      >
+
+        <strong>${escapeHtml(name)}</strong>
+
+        <span class="muted">
+          ${escapeHtml(aliases)}
+        </span>
+
+      </button>
+    `;
+
+  }).join("");
+}
+
+
+function pickIngredient(name) {
+
+  if (!selectedIngredients.includes(name)) {
+    selectedIngredients.push(name);
+  }
+
+  const input = document.getElementById("fIngredients");
+
+  if (input) {
+    input.value = selectedIngredients.join(", ");
+  }
+
+  const suggestions =
+    document.getElementById("ingredientSuggestions");
+
+  if (suggestions) {
+    suggestions.innerHTML = "";
+  }
+
+  renderIngredientChips();
+}
+
+
+/* =========================
+   PAGE INITIALIZATION
+   ========================= */
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+  /* Load ingredient database */
+
+  try {
+
+    const d = await apiGet("/ingredients");
+
+    ingredientCatalog =
+      Array.isArray(d.items)
+        ? d.items
+        : [];
+
+  } catch (e) {
+
+    ingredientCatalog = [];
+
+  }
+
+
+  /* Ingredient input */
+
+  const ingredientInput =
+    document.getElementById("fIngredients");
+
+  if (ingredientInput) {
+
+    ingredientInput.addEventListener(
+      "input",
+      e => showIngredientSuggestions(e.target.value)
+    );
+
+  }
+
+
+  /* =========================
+     FORMULATION CHECK BUTTON
+     ========================= */
+
+  const button =
+    document.getElementById("fBtn");
+
+  if (!button) return;
+
+
+  button.onclick = async () => {
+
+    const result =
+      document.getElementById("fResult");
+
+    if (!result) return;
+
+
+    /* Loading */
+
+    result.classList.add("show");
+
+    result.innerHTML = `
+      <div class="loading">
+        <span class="dot"></span>
+
+        Matching ingredients and
+        classifying formulation…
+      </div>
+    `;
+
+
+    try {
+
+      /* =========================
+         SEND REQUEST
+         ========================= */
+
+      const d = await apiPost("/classify", {
+
+        name:
+          document.getElementById("fName")?.value || "",
+
+        dosage_form:
+          document.getElementById("fDose")?.value || "",
+
+        ingredients:
+          document.getElementById("fIngredients")?.value || "",
+
+        intended_use:
+          document.getElementById("fUse")?.value || "",
+
+        novelty:
+          document.getElementById("fNovel")?.value || "",
+
+        jurisdiction:
+          document.getElementById("fJurisdiction")?.value || "",
+
+        language:
+          currentLanguage()
+
+      });
+
+
+      /* =========================
+         SAFE ARRAY HANDLING
+         ========================= */
+
+      const matchedIngredients =
+        Array.isArray(d.matched_ingredients)
+          ? d.matched_ingredients
+          : [];
+
+
+      const nextSteps =
+        Array.isArray(d.next_steps)
+          ? d.next_steps
+          : (
+              Array.isArray(d.steps)
+                ? d.steps
+                : []
+            );
+
+
+      const sources =
+        Array.isArray(d.sources)
+          ? d.sources
+          : [];
+
+
+      /* =========================
+         INGREDIENT CARDS
+         ========================= */
+
+      const ingredientCards =
+        matchedIngredients.map(x => {
+
+          const aliases =
+            Array.isArray(x.aliases)
+              ? x.aliases.join(", ")
+              : String(x.aliases || "—");
+
+
+          const commonForms =
+            Array.isArray(x.common_forms)
+              ? x.common_forms.join(", ")
+              : String(x.common_forms || "—");
+
+
+          return `
+            <div class="card">
+
+              <div class="result-header">
+
+                <h3>
+                  🌿 ${escapeHtml(x.name || "Unknown ingredient")}
+                </h3>
+
+                <span class="pill">
+                  Matched
+                </span>
+
+              </div>
+
+
+              <p class="muted">
+
+                <b>Also known as:</b>
+                ${escapeHtml(aliases)}
+
+              </p>
+
+
+              <p class="muted">
+
+                <b>Part used:</b>
+                ${escapeHtml(x.part_used || "—")}
+
+                ·
+
+                <b>Common forms:</b>
+                ${escapeHtml(commonForms)}
+
+              </p>
+
+
+              <p>
+
+                <b>Traditional context:</b>
+                ${escapeHtml(x.traditional_context || "—")}
+
+              </p>
+
+
+              <p>
+
+                <b>IP:</b>
+                ${escapeHtml(x.ip_flag || "—")}
+
+              </p>
+
+
+              <p>
+
+                <b>ABS:</b>
+                ${escapeHtml(x.abs_flag || "—")}
+
+              </p>
+
+
+              <p>
+
+                <b>Regulatory:</b>
+                ${escapeHtml(x.regulatory_flag || "—")}
+
+              </p>
+
+            </div>
+          `;
+
+        }).join("");
+
+
+      /* =========================
+         DETECTED INGREDIENT SECTION
+         ========================= */
+
+      const ingredientSection =
+        ingredientCards
+          ? `
+            <h3 style="margin-top:22px">
+              Detected ingredients
+            </h3>
+
+            <div class="grid grid-2">
+              ${ingredientCards}
+            </div>
+          `
+          : `
+            <div
+              class="notice"
+              style="margin-top:20px"
+            >
+              No known ingredient was confidently
+              matched in the prototype database.
+              You can still enter the ingredient manually
+              and verify it against authoritative sources.
+            </div>
+          `;
+
+
+      /* =========================
+         NEXT STEPS
+         ========================= */
+
+      const nextStepsHtml =
+        nextSteps.length
+          ? `
+            <h3 style="margin-top:22px">
+              Next steps
+            </h3>
+
+            <ol>
+              ${
+                nextSteps.map(x =>
+                  `<li>${escapeHtml(x)}</li>`
+                ).join("")
+              }
+            </ol>
+          `
+          : "";
+
+
+      /* =========================
+         FINAL RESULT
+         ========================= */
+
+      result.innerHTML = `
+
+        <div class="result-header">
+
+          <h2>
+            ${escapeHtml(
+              d.category || "Preliminary formulation assessment"
+            )}
+          </h2>
+
+          <span class="pill">
+            ${escapeHtml(
+              d.confidence || "Preliminary"
+            )}
+            confidence
+          </span>
+
+        </div>
+
+
+        <p>
+          ${escapeHtml(
+            d.explanation ||
+            "This is a preliminary, source-grounded assessment."
+          )}
+        </p>
+
+
+        ${ingredientSection}
+
+
+        <div
+          class="grid grid-3"
+          style="margin-top:20px"
+        >
+
+          <div class="card">
+
+            <h3>
+              Regulatory
+            </h3>
+
+            <p class="muted">
+              ${escapeHtml(
+                d.regulatory || "Not specified"
+              )}
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              IP posture
+            </h3>
+
+            <p class="muted">
+              ${escapeHtml(
+                d.ip || "Not specified"
+              )}
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              ABS / TK
+            </h3>
+
+            <p class="muted">
+              ${escapeHtml(
+                d.abs || "Not specified"
+              )}
+            </p>
+
+          </div>
+
+        </div>
+
+
+        ${nextStepsHtml}
+
+
+        ${sourcesHtml(sources)}
+
+      `;
+
+
+      translateDynamicContent();
+
+
+    } catch (e) {
+
+      result.innerHTML = `
+        <div class="notice">
+          ${escapeHtml(
+            e.message || "Something went wrong."
+          )}
+        </div>
+      `;
+
+    }
+
+  };
+
 });
-  </script>
- </body>
+</script>
+
+</body>
 </html>
 
+    </div>
