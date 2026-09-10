@@ -139,6 +139,8 @@ def health():
         "service": "IP-SAKTI Sahayak",
         "version": "1.1.0"
     }
+
+
 def retrieve(question: str, jurisdiction: str):
     terms = set(re.findall(r"[a-zA-Z]{3,}", question.lower()))
     scored = []
@@ -328,7 +330,8 @@ def ask(req: AskRequest):
                 "Check the applicable national ABS framework.",
                 "Seek specialist advice if benefit-sharing or permissions may apply."
             ]
-        elif (
+
+    elif (
         "regulat" in lower
         or "medicine" in lower
         or "cosmetic" in lower
@@ -658,6 +661,8 @@ def classify(req: FormulationRequest):
             "regulatory approval or a final classification."
         )
     }
+
+
 @app.post("/ip-check")
 def ip_check(req: IPRequest):
     hindi = is_hindi(req.language)
