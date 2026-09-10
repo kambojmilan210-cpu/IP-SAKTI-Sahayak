@@ -1,146 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <title>
-   Evidence &amp; Sources | IP-SAKTI Sahayak
-  </title>
-  <meta content="IP-SAKTI Sahayak — source-grounded AI guidance for Ayurveda IP and regulatory pathways." name="description"/>
-  <link href="css/style.css" rel="stylesheet"/>
- </head>
- <body>
-  <header class="navbar">
-   <div class="container nav-inner">
-    <a class="brand" href="index.html">
-     <span class="brand-mark">
-      S
-     </span>
-     <span>
-      IP-SAKTI Sahayak
-     </span>
-    </a>
-    <button class="mobile-toggle">
-     ☰
-    </button>
-    <nav class="nav-links">
-     <a class="" href="index.html">
-      Home
-     </a>
-     <a class="" href="ask-sahayak.html">
-      Ask Sahayak
-     </a>
-     <a class="" href="ip-checker.html">
-      IP Checker
-     </a>
-     <a class="" href="formulation.html">
-      Formulation
-     </a>
-     <a class="" href="patent-explorer.html">
-      Patent Explorer
-     </a>
-     <a class="" href="regulatory-navigator.html">
-      Regulatory
-     </a>
-     <a class="" href="regulatory-journey.html">
-      Journey
-     </a>
-     <a class="" href="comparison.html">
-      Compare
-     </a>
-     <a class="" href="knowledge-explorer.html">
-      Knowledge
-     </a>
-     <a class="active" href="evidence.html">
-      Evidence
-     </a>
-    </nav>
-    <select aria-label="Language" class="lang-select" id="language">
-     <option>
-      English
-     </option>
-     <option>
-      हिन्दी
-     </option>
-    </select>
-   </div>
-  </header>
-  <main class="section">
-   <div class="container">
-    <div class="section-head">
-     <div>
-      <div class="kicker">
-       Traceability
-      </div>
-      <h1 style="font-size:44px">
-       Evidence &amp; Sources
-      </h1>
-      <p>
-       Every important AI answer should be traceable to the evidence used by the system.
-      </p>
-     </div>
-    </div>
-    <div class="grid" id="evidence">
-    </div>
-   </div>
-  </main>
-  <script>
-   document.addEventListener("DOMContentLoaded",async()=>{
- const el=document.getElementById("evidence");
- try{
-  const d=await apiGet("/sources");
-  el.innerHTML=d.sources.map(s=>{const url=safeSourceUrl(s.url); return `<div class="card"><div class="result-header"><h3>${escapeHtml(s.title)}</h3><span class="pill">${escapeHtml(s.jurisdiction)}</span></div><p class="muted">${escapeHtml(s.description)}</p><div class="grid grid-3"><div><b>Authority</b><br>${escapeHtml(s.authority)}</div><div><b>Version</b><br>${escapeHtml(s.version)}</div><div><b>Effective date</b><br>${escapeHtml(s.effective_date)}</div></div>${url?`<a class="source-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">🔗 Open real official source</a><small class="muted source-url">${escapeHtml(url)}</small>`:""}</div>`;}).join("");
- }catch(e){el.innerHTML='<div class="notice">'+escapeHtml(e.message)+'</div>';}
-});
-  </script>
-  <footer>
-   <div class="container footer-grid">
-    <div>
-     <h3>
-      IP-SAKTI Sahayak
-     </h3>
-     <p>
-      AI-powered, source-grounded preliminary guidance for Ayurveda intellectual property and regulatory pathways.
-     </p>
-    </div>
-    <div>
-     <h3>
-      Explore
-     </h3>
-     <a href="ask-sahayak.html">
-      Ask Sahayak
-     </a>
-     <a href="formulation.html">
-      Formulation Explorer
-     </a>
-     <a href="knowledge-explorer.html">
-      Knowledge Explorer
-     </a>
-    </div>
-    <div>
-     <h3>
-      Important
-     </h3>
-     <a href="evidence.html">
-      Evidence &amp; Sources
-     </a>
-     <a href="comparison.html">
-      National / International
-     </a>
-     <p class="muted">
-      Informational guidance only — not legal advice.
-     </p>
-    </div>
-   </div>
-   <div class="container" style="margin-top:25px;border-top:1px solid #31564a;padding-top:15px;font-size:13px">
-    ©
-    <span id="year">
-    </span>
-    IP-SAKTI Sahayak
-   </div>
-  </footer>
-  <script src="js/main.js">
-  </script>
- </body>
-</html>
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Evidence & Sources | IP-SAKTI Sahayak</title>
+
+  <meta
+    name="description"
+    content="IP-SAKTI Sahayak — source-grounded AI guidance for Ayurveda IP and regulatory pathways."
+  >
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <header class="navbar">
+
+    <div class="container nav-inner">
+
+      <a class="brand" href="index.html">
+
+        <span class="brand-mark">
+          S
+        </span>
+
+        <span>
+          IP-SAKTI Sahayak
+        </span>
+
+      </a>
+
+      <button class="mobile-toggle" type="button">
+        ☰
+      </button>
+
+      <nav class="nav-links">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="ask-sahayak.html">
+          Ask Sahayak
+        </a>
+
+        <a href="ip-checker.html">
+          IP Checker
+        </a>
+
+        <a href="formulation.html">
+          Formulation
+        </a>
+
+        <a href="patent-explorer.html">
+          Patent Explorer
+        </a>
+
+        <a href="regulatory-navigator.html">
+          Regulatory
+        </a>
+
+        <a href="regulatory-journey.html">
+          Journey
+        </a>
+
+        <a href="comparison.html">
+          Compare
+        </a>
+
+        <a href="knowledge-explorer.html">
+          Knowledge
+        </a>
+
+        <a class="active" href="evidence.html">
+          Evidence
+        </a>
+
+      </nav>
+
+      <!-- LANGUAGE -->
+
+      <select
+        aria-label="Language"
+        class="lang-select"
+        id="language"
+      >
+
+        <option value="English">
+          English
+        </option>
+
+        <option value="हिन्दी">
+          हिन्दी
+        </option>
+
+      </select>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= MAIN START ================= -->
+
+  <main class="section">
+
+    <div class="container">
+     <!-- ================= PAGE HEADER ================= -->
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="kicker">
+            Traceability
+          </div>
+
+          <h1 style="font-size:44px">
+            Evidence & Sources
+          </h1>
+
+          <p>
+            Every important AI answer should be traceable to the
+            evidence used by the system.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= SOURCES CONTAINER ================= -->
+
+      <div
+        class="grid"
+        id="evidence"
+      >
+
+        <!-- Sources will be loaded from backend -->
+
+        <div class="notice">
+          Loading official sources...
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+  <!-- ================= MAIN JAVASCRIPT ================= -->
+
+  <script src="js/main.js"></script>
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", async () => {
+
+      const el = document.getElementById("evidence");
+
+      try {
+
+        /* ================= GET SOURCES ================= */
+
+        const d = await apiGet("/sources");
+
+        /* ================= SAFE ARRAY ================= */
+
+        const sources = Array.isArray(d.sources)
+          ? d.sources
+          : [];
+
+        /* ================= NO SOURCES ================= */
+
+        if (!sources.length) {
+
+          el.innerHTML = `
+            <div class="notice">
+              No official sources available.
+            </div>
+          `;
+
+          return;
+        }
+
+
+        /* ================= DISPLAY SOURCES ================= */
+
+        el.innerHTML = sources.map((s, index) => {
+
+          const url = safeSourceUrl(s.url);
+
+          return `
+
+            <div class="card">
+
+              <!-- SOURCE HEADER -->
+
+              <div class="result-header">
+
+                <h3>
+                  ${escapeHtml(
+                    s.title || `Official Source ${index + 1}`
+                  )}
+                </h3>
+
+                <span class="pill">
+                  ${escapeHtml(
+                    s.jurisdiction || "India"
+                  )}
+                </span>
+
+              </div>
+
+
+              <!-- DESCRIPTION -->
+
+              <p class="muted">
+
+                ${escapeHtml(
+                  s.description ||
+                  s.relevance ||
+                  "Official evidence source used by IP-SAKTI Sahayak."
+                )}
+
+              </p>
+
+
+              <!-- SOURCE DETAILS -->
+
+              <div class="grid grid-3">
+
+                <div>
+
+                  <b>
+                    Authority
+                  </b>
+
+                  <br>
+
+                  ${escapeHtml(
+                    s.authority || "Not specified"
+                  )}
+
+                </div>
+
+
+                <div>
+
+                  <b>
+                    Version
+                  </b>
+
+                  <br>
+
+                  ${escapeHtml(
+                    s.version || "Not specified"
+                  )}
+
+                </div>
+
+
+                <div>
+
+                  <b>
+                    Effective date
+                  </b>
+
+                  <br>
+
+                  ${escapeHtml(
+                    s.effective_date ||
+                    s.date ||
+                    "Not specified"
+                  )}
+
+                </div>
+
+              </div>
+
+
+              <!-- OFFICIAL SOURCE LINK -->
+
+              ${
+                url
+                  ? `
+
+                    <a
+                      class="source-link"
+                      href="${escapeHtml(url)}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      🔗 Open real official source
+                    </a>
+
+                    <small class="muted source-url">
+
+                      ${escapeHtml(url)}
+
+                    </small>
+
+                  `
+                  : `
+
+                    <small class="muted">
+
+                      Official link not available
+                      in this record.
+
+                    </small>
+
+                  `
+              }
+
+            </div>
+
+          `;
+
+        }).join("");
+
+
+        /* ================= HINDI SUPPORT ================= */
+
+        if (typeof translateDynamicContent === "function") {
+
+          translateDynamicContent();
+
+        }
+
+
+      } catch (error) {
+
+        /* ================= ERROR HANDLING ================= */
+
+        el.innerHTML = `
+
+          <div class="notice">
+
+            ${escapeHtml(
+              error.message ||
+              "Unable to load official sources."
+            )}
+
+          </div>
+
+        `;
+
+      }
+
+    });
+
+  </script>
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="container footer-grid">
+
+      <!-- ABOUT -->
+
+      <div>
+
+        <h3>
+          IP-SAKTI Sahayak
+        </h3>
+
+        <p>
+          AI-powered, source-grounded preliminary guidance
+          for Ayurveda intellectual property and regulatory pathways.
+        </p>
+
+      </div>
+
+
+      <!-- EXPLORE -->
+
+      <div>
+
+        <h3>
+          Explore
+        </h3>
+
+        <a href="ask-sahayak.html">
+          Ask Sahayak
+        </a>
+
+        <a href="formulation.html">
+          Formulation Explorer
+        </a>
+
+        <a href="knowledge-explorer.html">
+          Knowledge Explorer
+        </a>
+
+      </div>
+
+
+      <!-- IMPORTANT -->
+
+      <div>
+
+        <h3>
+          Important
+        </h3>
+
+        <a href="evidence.html">
+          Evidence & Sources
+        </a>
+
+        <a href="comparison.html">
+          National / International
+        </a>
+
+        <p class="muted">
+          Informational guidance only — not legal advice.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- COPYRIGHT -->
+
+    <div
+      class="container"
+      style="
+        margin-top:25px;
+        border-top:1px solid #31564a;
+        padding-top:15px;
+        font-size:13px;
+      "
+    >
+
+      ©
+      <span id="year"></span>
+      IP-SAKTI Sahayak
+
+    </div>
+
+  </footer>
+
+
+</body>
+
+</html>
