@@ -424,7 +424,9 @@ def ask(req: AskRequest):
             "regulatory approval, certification or a final patentability determination."
         )
     }
-    def match_ingredients(raw_text: str):
+
+
+def match_ingredients(raw_text: str):
     text = raw_text.lower()
     matches = []
 
