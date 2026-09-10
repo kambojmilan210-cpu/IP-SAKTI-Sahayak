@@ -77,7 +77,7 @@ def is_hindi(language: str) -> bool:
 
 def source_record(item):
     return {
-        "title": item.get("source") or item.get("title"),
+        "title": item.get("source") or item.get("title", ""),
         "authority": item.get("authority", ""),
         "version": item.get(
             "version",
@@ -99,6 +99,7 @@ def jurisdiction_sources(jurisdiction: str):
             x for x in SOURCES
             if "india" in (
                 str(x.get("title", "")) + " " +
+                str(x.get("source", "")) + " " +
                 str(x.get("authority", "")) + " " +
                 str(x.get("summary", ""))
             ).lower()
@@ -120,13 +121,15 @@ def jurisdiction_sources(jurisdiction: str):
         if any(
             word in (
                 str(x.get("title", "")) + " " +
+                str(x.get("source", "")) + " " +
                 str(x.get("authority", "")) + " " +
                 str(x.get("summary", ""))
             ).lower()
             for word in international_words
         )
     ]
-return international if international else SOURCES[:4]
+
+    return international if international else SOURCES[:4]
 
 
 @app.get("/health")
@@ -136,8 +139,6 @@ def health():
         "service": "IP-SAKTI Sahayak",
         "version": "1.1.0"
     }
-
-
 def retrieve(question: str, jurisdiction: str):
     terms = set(re.findall(r"[a-zA-Z]{3,}", question.lower()))
     scored = []
@@ -151,7 +152,7 @@ def retrieve(question: str, jurisdiction: str):
 
         score = sum(1 for term in terms if term in text)
 
-        if jurisdiction.lower() in text:
+        if str(jurisdiction or "").lower() in text:
             score += 2
 
         if score > 0:
@@ -227,13 +228,11 @@ def ask(req: AskRequest):
             )
         }
 
-    # PATENT
     if (
         "patent" in lower
         or "patentable" in lower
         or "novel" in lower
     ):
-
         if hindi:
             answer = (
                 "प्रारंभिक patentability review में पहले यह देखें कि "
@@ -265,9 +264,7 @@ def ask(req: AskRequest):
                 "Obtain a professional patentability opinion before filing."
             ]
 
-    # TRADEMARK
     elif "trademark" in lower or "brand" in lower:
-
         if hindi:
             answer = (
                 "Trademark strategy मुख्य रूप से distinctive brand name, "
@@ -296,14 +293,12 @@ def ask(req: AskRequest):
                 "File and monitor the application."
             ]
 
-    # ABS / TRADITIONAL KNOWLEDGE
     elif (
         "abs" in lower
         or "nagoya" in lower
         or "biological" in lower
         or "traditional knowledge" in lower
     ):
-
         if hindi:
             answer = (
                 "यदि innovation में biological resources या associated "
@@ -333,15 +328,12 @@ def ask(req: AskRequest):
                 "Check the applicable national ABS framework.",
                 "Seek specialist advice if benefit-sharing or permissions may apply."
             ]
-
-    # REGULATORY
-    elif (
+        elif (
         "regulat" in lower
         or "medicine" in lower
         or "cosmetic" in lower
         or "nutraceutical" in lower
     ):
-
         if hindi:
             answer = (
                 "Regulatory requirements product classification और intended "
@@ -370,9 +362,7 @@ def ask(req: AskRequest):
                 "Prepare applicable evidence and documents."
             ]
 
-    # GENERAL
     else:
-
         if hindi:
             answer = (
                 "इस प्रश्न के लिए पहले jurisdiction, product category और "
@@ -473,8 +463,6 @@ def classify(req: FormulationRequest):
     matched = match_ingredients(text_all)
     hindi = is_hindi(req.language)
 
-    # PRODUCT CLASSIFICATION
-
     if any(
         word in text_all
         for word in ["cosmetic", "cream", "skin", "shampoo", "soap"]
@@ -561,8 +549,6 @@ def classify(req: FormulationRequest):
             "within the applicable classical/generic medicine pathway."
         )
 
-    # INGREDIENT ANALYSIS
-
     ingredient_notes = []
 
     for item in matched:
@@ -582,8 +568,6 @@ def classify(req: FormulationRequest):
                 "common_forms", []
             )
         })
-
-    # IP / TK / ABS
 
     if matched:
         if hindi:
@@ -634,314 +618,230 @@ def classify(req: FormulationRequest):
                 "a new technical contribution and conduct a prior-art search."
             )
 
-    # FINAL RESPONSE
-
     if hindi:
         explanation = (
             "Prototype formulation rules और ingredient knowledge layer को "
-            "combine करता है। यह navigation aid है, legal या regulatory determination नहीं।"
+            "combine करता है। यह navigation aid है, legal या regulatory "
+            "determination नहीं।"
         )
 
-        next_steps = [
-            "Product classification को current applicable rules से verify करें।",
-            "Ingredient identity, plant part, source और provenance confirm करें।",
-            "Matched ingredients के Traditional Knowledge/prior-art aspects review करें।",
-            "Classification को regulatory journey से map करें।",
-            "Appropriate IP protection route review करें।"
-        ]
+        confidence = "Medium"
 
     else:
         explanation = (
-            "The prototype combines formulation rules with an ingredient "
+            "The prototype combines formulation rules with the ingredient "
             "knowledge layer. It is a navigation aid, not a legal or regulatory determination."
         )
 
-        next_steps = [
-            "Verify classification against current applicable rules.",
-            "Confirm ingredient identity, plant part, source and provenance.",
-            "Review traditional-knowledge/prior-art considerations for matched ingredients.",
-            "Map the classification to the regulatory journey.",
-            "Review the appropriate IP protection route."
-        ]
+        confidence = "Medium"
 
     selected_sources = jurisdiction_sources(req.jurisdiction)
 
     return {
         "category": category,
-        "confidence": "Medium" if matched else "Low",
-        "explanation": explanation,
-        "regulatory": regulatory,
-        "ip": ip,
-        "abs": abs_text,
+        "regulatory_guidance": regulatory,
         "matched_ingredients": ingredient_notes,
-        "next_steps": next_steps,
-        "sources": [
-            source_record(item)
-            for item in selected_sources[:4]
-        ]
-    }
-    @app.post("/ip-check")
-def ip_check(req: IPRequest):
-    hindi = is_hindi(req.language)
-
-    risk = "Low"
-
-    if req.similar_product == "Yes" or req.traditional_knowledge == "Yes":
-        risk = "Medium"
-
-    if not req.novelty.strip():
-        risk = "High"
-
-    if hindi:
-        routes = [
-            {
-                "name": "Patent",
-                "status": "Review",
-                "reason": "New technical solution होने पर relevant हो सकता है; prior-art search आवश्यक है."
-            },
-            {
-                "name": "Trademark",
-                "status": "Review",
-                "reason": "Distinctive brand name, product name या logo के लिए relevant हो सकता है."
-            },
-            {
-                "name": "Trade Secret",
-                "status": "Possible",
-                "reason": "Confidential know-how को secrecy maintain करके protect किया जा सकता है."
-            },
-            {
-                "name": "Design",
-                "status": "Case-dependent",
-                "reason": "Qualifying visual या aesthetic product features के लिए relevant हो सकता है."
-            },
-            {
-                "name": "Copyright",
-                "status": "Case-dependent",
-                "reason": "Original artwork, documentation या software जैसी expression को protect कर सकता है."
-            },
-            {
-                "name": "GI",
-                "status": "Case-dependent",
-                "reason": "Applicable geographical linkage और GI requirements पूरी होने पर relevant हो सकता है."
-            }
-        ]
-
-        checks = [
-            "Structured prior-art search करें.",
-            "Relevant TK/prior-art databases check करें.",
-            "Inventorship, development records और dates document करें.",
-            "Public disclosure से पहले appropriate IP route assess करें."
-        ]
-
-        summary = (
-            "Prototype केवल preliminary indicators देता है. "
-            "High-attention result का मतलब यह नहीं है कि innovation unprotectable है; "
-            "इसका मतलब है कि अधिक evidence की आवश्यकता है."
-        )
-
-        disclaimer = (
-            "केवल प्रारंभिक informational guidance; यह legal advice, "
-            "regulatory approval, certification या final patentability determination नहीं है."
-        )
-
-    else:
-        routes = [
-            {
-                "name": "Patent",
-                "status": "Review",
-                "reason": "Potentially relevant where a new technical solution satisfies applicable patentability requirements; prior-art search is essential."
-            },
-            {
-                "name": "Trademark",
-                "status": "Review",
-                "reason": "Relevant for a distinctive brand, product name or logo; clearance and class selection are needed."
-            },
-            {
-                "name": "Trade Secret",
-                "status": "Possible",
-                "reason": "May help protect confidential know-how when secrecy can realistically be maintained."
-            },
-            {
-                "name": "Design",
-                "status": "Case-dependent",
-                "reason": "May be relevant to protect qualifying visual or aesthetic features of a product."
-            },
-            {
-                "name": "Copyright",
-                "status": "Case-dependent",
-                "reason": "May protect qualifying original expression such as artwork, documentation or software."
-            },
-            {
-                "name": "GI",
-                "status": "Case-dependent",
-                "reason": "Relevant only where the product and geographical linkage satisfy the applicable GI framework."
-            }
-        ]
-
-        checks = [
-            "Run a structured prior-art search.",
-            "Check TK/prior-art databases where relevant.",
-            "Document dates, inventorship and development records.",
-            "Assess the correct IP route before public disclosure."
-        ]
-
-        summary = (
-            "The prototype finds preliminary indicators only. "
-            "A high-attention result means more evidence is needed; "
-            "it does not mean the innovation is unprotectable."
-        )
-
-        disclaimer = (
-            "Preliminary informational guidance only; not legal advice, "
-            "regulatory approval, certification or a final patentability determination."
-        )
-
-    if req.traditional_knowledge == "Yes":
-        if hindi:
-            checks.insert(
-                1,
-                "Traditional Knowledge का source और nature record करें तथा applicable protection/ABS considerations examine करें."
-            )
-        else:
-            checks.insert(
-                1,
-                "Record the source and nature of traditional knowledge and examine applicable protection/ABS considerations."
-            )
-
-    selected_sources = jurisdiction_sources(req.jurisdiction)
-
-    return {
-        "risk": risk,
-        "summary": summary,
-        "routes": routes,
-        "checks": checks,
+        "ip_guidance": ip,
+        "abs_guidance": abs_text,
+        "explanation": explanation,
+        "confidence": confidence,
         "sources": [
             source_record(item)
             for item in selected_sources[:4]
         ],
-        "disclaimer": disclaimer
+        "disclaimer": (
+            "प्रारंभिक सूचना आधारित मार्गदर्शन; यह legal advice, "
+            "regulatory approval या final classification नहीं है।"
+            if hindi
+            else
+            "Preliminary informational guidance only; not legal advice, "
+            "regulatory approval or a final classification."
+        )
+    }
+@app.post("/ip-check")
+def ip_check(req: IPRequest):
+    hindi = is_hindi(req.language)
+
+    name = req.name.strip()
+    description = req.description.strip()
+    novelty = req.novelty.strip()
+    tk = req.traditional_knowledge.strip()
+    similar = req.similar_product.strip()
+
+    attention = "Medium"
+    indicator = "Preliminary review needed"
+
+    if (
+        tk.lower() not in ["no", "no / unknown", "unknown", "none"]
+        or similar.lower() not in ["no", "unknown", "none"]
+    ):
+        attention = "High"
+
+    if novelty.lower() in [
+        "yes",
+        "novel",
+        "new",
+        "yes - novel"
+    ]:
+        indicator = "Potential IP opportunity; evidence required"
+    else:
+        indicator = "Preliminary IP assessment required"
+
+    routes = [
+        "Patent",
+        "Trademark",
+        "Trade Secret",
+        "Design",
+        "Copyright",
+        "Geographical Indication"
+    ]
+
+    if hindi:
+        answer = (
+            f"'{name or 'इस innovation'}' के लिए यह केवल preliminary IP "
+            "indicator है। Final patentability या ownership determination "
+            "के लिए prior-art, Traditional Knowledge और applicable rules "
+            "की detailed review आवश्यक है।"
+        )
+
+        recommendations = [
+            "Innovation के novel technical features document करें।",
+            "Relevant patent और non-patent prior art search करें।",
+            "Traditional Knowledge involvement verify करें।",
+            "Similar products और existing disclosures check करें।",
+            "Filing या commercialization से पहले qualified IP professional से सलाह लें।"
+        ]
+
+    else:
+        answer = (
+            f"For '{name or 'this innovation'}', this is only a preliminary "
+            "IP indicator. A final patentability or ownership determination "
+            "requires detailed review of prior art, traditional knowledge "
+            "and applicable rules."
+        )
+
+        recommendations = [
+            "Document the novel technical features.",
+            "Search relevant patent and non-patent prior art.",
+            "Verify any Traditional Knowledge involvement.",
+            "Check similar products and existing disclosures.",
+            "Seek qualified IP professional advice before filing or commercialization."
+        ]
+
+    selected_sources = jurisdiction_sources(req.jurisdiction)
+
+    return {
+        "indicator": indicator,
+        "attention": attention,
+        "answer": answer,
+        "possible_ip_routes": routes,
+        "recommendations": recommendations,
+        "input_summary": {
+            "name": name,
+            "description": description,
+            "novelty": novelty,
+            "traditional_knowledge": tk,
+            "similar_product": similar,
+            "jurisdiction": req.jurisdiction
+        },
+        "sources": [
+            source_record(item)
+            for item in selected_sources[:4]
+        ],
+        "disclaimer": (
+            "यह preliminary informational guidance है। यह legal advice, "
+            "final patentability opinion, regulatory approval या commercial "
+            "clearance नहीं है।"
+            if hindi
+            else
+            "This is preliminary informational guidance only. It is not legal "
+            "advice, a final patentability opinion, regulatory approval or commercial clearance."
+        )
     }
 
 
 @app.post("/regulatory")
 def regulatory(req: RegulatoryRequest):
     hindi = is_hindi(req.language)
+    category = req.category.strip()
 
     if hindi:
-        common = [
-            {
-                "title": "Classification confirm करें",
-                "detail": "Current applicable rules और definitions के अनुसार product category verify करें."
-            },
-            {
-                "title": "Competent authority identify करें",
-                "detail": "Applicable authority, licence/registration route और current procedure identify करें."
-            },
-            {
-                "title": "Evidence तैयार करें",
-                "detail": "Formulation, ingredients, quality, safety, efficacy, labeling और applicable records compile करें."
-            },
-            {
-                "title": "IP और ABS check करें",
-                "detail": "Relevant होने पर IP strategy तथा traditional-knowledge/biological-resource obligations review करें."
-            },
-            {
-                "title": "Submit / Comply",
-                "detail": "Current authority procedure follow करें और approval/registration के बाद ongoing compliance maintain करें."
-            }
-        ]
-
-        summary = (
-            "इसे navigation checklist के रूप में उपयोग करें, "
-            "regulatory approval decision के रूप में नहीं."
-        )
-
-        disclaimer = (
-            "Requirements बदल सकती हैं. Regulatory action लेने से पहले "
-            "current official rules verify करें."
-        )
-
-    else:
-        common = [
-            {
-                "title": "Confirm classification",
-                "detail": "Verify the selected product category using the current applicable rules and definitions."
-            },
-            {
-                "title": "Map competent authority",
-                "detail": "Identify the authority, licence/registration route and current procedural requirements."
-            },
-            {
-                "title": "Prepare evidence",
-                "detail": "Compile formulation, ingredient, quality, safety, efficacy, labeling and other applicable records."
-            },
-            {
-                "title": "Check IP and ABS",
-                "detail": "Review IP strategy and traditional-knowledge/biological-resource obligations where relevant."
-            },
-            {
-                "title": "Submit / comply",
-                "detail": "Follow the current authority procedure and maintain ongoing compliance after approval/registration where applicable."
-            }
-        ]
-
-        summary = (
-            "Use this as a navigation checklist, not as a regulatory approval decision."
-        )
-
-        disclaimer = (
-            "Requirements can change. Verify current official rules before taking regulatory action."
-        )
-
-    if req.jurisdiction != "India":
-        if hindi:
-            common[1]["detail"] = (
-                "International requirements jurisdiction के अनुसार अलग होते हैं. "
-                "Target country/region select करके उसकी current competent authority और procedure verify करें."
+        if req.jurisdiction.lower() == "india":
+            answer = (
+                f"'{category}' के लिए India-specific regulatory pathway "
+                "product classification, ingredients, intended use और "
+                "applicable authority पर निर्भर करेगा।"
             )
         else:
-            common[1]["detail"] = (
-                "International requirements differ by jurisdiction. "
-                "Select the target country/region and verify its current competent authority and procedure."
+            answer = (
+                f"'{category}' के लिए international jurisdiction में "
+                "applicable authority, classification और local requirements "
+                "verify करना आवश्यक है।"
             )
+
+        steps = [
+            "Product classification determine करें।",
+            "Ingredients और intended use document करें।",
+            "Applicable competent authority identify करें।",
+            "Current rules, standards और evidence requirements verify करें।",
+            "Submission/commercialization से पहले professional review लें।"
+        ]
+
+    else:
+        if req.jurisdiction.lower() == "india":
+            answer = (
+                f"For '{category}', the India-specific regulatory pathway "
+                "depends on product classification, ingredients, intended use "
+                "and the applicable competent authority."
+            )
+        else:
+            answer = (
+                f"For '{category}', the international pathway requires "
+                "verification of the applicable authority, classification "
+                "and local requirements."
+            )
+
+        steps = [
+            "Determine product classification.",
+            "Document ingredients and intended use.",
+            "Identify the applicable competent authority.",
+            "Verify current rules, standards and evidence requirements.",
+            "Obtain professional review before submission or commercialization."
+        ]
 
     selected_sources = jurisdiction_sources(req.jurisdiction)
 
     return {
-        "title": f"{req.category} — preliminary pathway",
+        "category": category,
         "jurisdiction": req.jurisdiction,
-        "summary": summary,
-        "steps": common,
+        "answer": answer,
+        "next_steps": steps,
         "sources": [
             source_record(item)
             for item in selected_sources[:4]
         ],
-        "disclaimer": disclaimer
+        "disclaimer": (
+            "यह preliminary regulatory guidance है और regulatory approval "
+            "या legal advice नहीं है।"
+            if hindi
+            else
+            "This is preliminary regulatory guidance and is not regulatory approval or legal advice."
+        )
     }
 
 
 @app.get("/knowledge")
-def knowledge(q: Optional[str] = None):
-    items = KNOWLEDGE
-
-    if q:
-        terms = re.findall(r"[a-zA-Z]{3,}", q.lower())
-
-        items = [
-            item for item in KNOWLEDGE
-            if any(
-                term in (
-                    str(item.get("title", "")) + " " +
-                    str(item.get("summary", "")) + " " +
-                    str(item.get("category", ""))
-                ).lower()
-                for term in terms
-            )
-        ]
-
-    return {"items": items}
+def knowledge():
+    return {
+        "items": KNOWLEDGE
+    }
 
 
 @app.get("/sources")
 def sources():
-    return {"sources": SOURCES}
+    return {
+        "items": [
+            source_record(item)
+            for item in SOURCES
+        ]
+    }
