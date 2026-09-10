@@ -126,9 +126,10 @@ def jurisdiction_sources(jurisdiction: str):
             for word in international_words
         )
     ]
+return international if international else SOURCES[:4]
 
-    return international if international else SOURCES[:4]
-    @app.get("/health")
+
+@app.get("/health")
 def health():
     return {
         "status": "ok",
